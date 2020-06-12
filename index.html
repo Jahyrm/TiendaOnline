@@ -11,7 +11,8 @@
             margin: 0;
             padding: 0;
         }
-        body{
+
+        body {
             margin-top: 180px;
         }
 
@@ -30,17 +31,33 @@
         .heade>.cuenta {
             margin-right: 7%;
         }
-
-        .heade>.cuenta>a {
-            color: white;
-            text-decoration: none;
+        .heade>.cuenta > a {
             display: block;
             text-align: right;
         }
 
-        .heade>.cuenta>a:hover {
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+
+        p>a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        a:hover {
             color: red;
             text-decoration: underline;
+        }
+
+        h4 {
+            color: white;
+            text-align: left;
+            
         }
     </style>
 </head>
@@ -51,7 +68,7 @@
             <div class="logo">
                 <img src="img/Logo.jpeg" alt="">
             </div>
-            <div class="cuenta">        
+            <div class="cuenta">
                 <a href="">Mi cuenta</a>
                 <a href="">Carrito de compras </a>
             </div>
@@ -79,8 +96,8 @@
                                                 <a href="#" class="dropdown-item">Marca 2</a>
                                             </div>
                                         </li>
-        
-        
+
+
                                         <li class="nav-item dropdown  mx-lg-1">
                                             <a href="" class="nav-link dropdown-toggle" id="navbarDropdown1"
                                                 data-toggle="dropdown">
@@ -92,8 +109,8 @@
 
                                             </div>
                                         </li>
-        
-        
+
+
                                         <li class="nav-item dropdown  mx-lg-1">
                                             <a href="" class="nav-link dropdown-toggle" id="navbarDropdown2"
                                                 data-toggle="dropdown">
@@ -104,8 +121,8 @@
                                                 <a href="#" class="dropdown-item">ca 2</a>
                                             </div>
                                         </li>
-        
-        
+
+
                                         <li class="nav-item dropdown  mx-lg-1">
                                             <a href="" class="nav-link dropdown-toggle" id="navbarDropdown3"
                                                 data-toggle="dropdown">
@@ -116,14 +133,13 @@
                                                 <a href="#" class="dropdown-item">Cuidado 2</a>
                                             </div>
                                         </li>
-        
-        
+
+
                                         <li class="nav-item  mx-lg-2">
                                             <a href="" class="nav-link">Otros</a>
                                         </li>
                                     </ul>
-        
-                                    <form action="" class="form-inline" my-2 my-lg-0>
+                                    <form action="" class="form-inline w-100" my-2 my-lg-0>
                                         <input type="text" class="form-control mr-sm-2" type="search"
                                             placeholder="¿Qué estás buscando?">
                                         <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
@@ -136,8 +152,8 @@
             </div>
         </div>
     </header>
-    
-    <main class="container"  >
+
+    <main class="container">
         <div class="row d-flex justify-content-around mt-3" id="promociones">
             <div class="col">
                 <div id="carouselId" class="carousel slide" data-ride="carousel">
@@ -197,7 +213,7 @@
             </div>
         </div>
 
-        <div class="row py-4" >
+        <div class="row py-4">
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4" id="productoPromo">
                 <div class="card">
@@ -243,379 +259,379 @@
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/2.jpg" alt=""  style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto2">Detalles</button>
-                    <div class="modal fade" id="producto2" tabindex="-1" role="dialog" aria-labelledby="producto2"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 2</h3>
+                    <img class="card-img-top" src="img/2.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto2">Detalles</button>
+                        <div class="modal fade" id="producto2" tabindex="-1" role="dialog" aria-labelledby="producto2"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 2</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/2.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/3.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto3">Detalles</button>
-                    <div class="modal fade" id="producto3" tabindex="-1" role="dialog" aria-labelledby="producto3"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 3</h3>
+                    <img class="card-img-top" src="img/3.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto3">Detalles</button>
+                        <div class="modal fade" id="producto3" tabindex="-1" role="dialog" aria-labelledby="producto3"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 3</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/3.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/4.jpg" alt=""  style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto4">Detalles</button>
-                    <div class="modal fade" id="producto4" tabindex="-1" role="dialog" aria-labelledby="producto4"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 4</h3>
+                    <img class="card-img-top" src="img/4.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto4">Detalles</button>
+                        <div class="modal fade" id="producto4" tabindex="-1" role="dialog" aria-labelledby="producto4"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 4</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/4.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/5.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto5">Detalles</button>
-                    <div class="modal fade" id="producto5" tabindex="-1" role="dialog" aria-labelledby="producto5"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 5</h3>
+                    <img class="card-img-top" src="img/5.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto5">Detalles</button>
+                        <div class="modal fade" id="producto5" tabindex="-1" role="dialog" aria-labelledby="producto5"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 5</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/5.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/6.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto6">Detalles</button>
-                    <div class="modal fade" id="producto6" tabindex="-1" role="dialog" aria-labelledby="producto6"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 6</h3>
+                    <img class="card-img-top" src="img/6.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto6">Detalles</button>
+                        <div class="modal fade" id="producto6" tabindex="-1" role="dialog" aria-labelledby="producto6"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 6</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/6.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/7.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto7">Detalles</button>
-                    <div class="modal fade" id="producto7" tabindex="-1" role="dialog" aria-labelledby="producto7"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 7</h3>
+                    <img class="card-img-top" src="img/7.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto7">Detalles</button>
+                        <div class="modal fade" id="producto7" tabindex="-1" role="dialog" aria-labelledby="producto7"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/7.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 7</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/7.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/8.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto8">Detalles</button>
-                    <div class="modal fade" id="producto8" tabindex="-1" role="dialog" aria-labelledby="producto8"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 8</h3>
+                    <img class="card-img-top" src="img/8.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto8">Detalles</button>
+                        <div class="modal fade" id="producto8" tabindex="-1" role="dialog" aria-labelledby="producto8"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/8.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 8</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/8.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/9.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto9">Detalles</button>
-                    <div class="modal fade" id="producto9" tabindex="-1" role="dialog" aria-labelledby="producto9"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 9</h3>
+                    <img class="card-img-top" src="img/9.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto9">Detalles</button>
+                        <div class="modal fade" id="producto9" tabindex="-1" role="dialog" aria-labelledby="producto9"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/9.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 9</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/9.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                <img class="card-img-top" src="img/10.jpg" alt="" style="height: 250px;">
-                <div class="card-body">
-                    <h3 class="card-title">Producto</h3>
-                    <p class="card-text">Descripción del producto</p>
-                    <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                    <button class="btn btn-dark" data-toggle="modal" data-target="#producto10">Detalles</button>
-                    <div class="modal fade" id="producto10" tabindex="-1" role="dialog" aria-labelledby="producto10"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Detalles del producto</h4>
-                                    <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body"
-                                    style="display: flex; flex-direction: column; align-items: center;">
-                                    <div class="mb-2">
-                                        <h3>Producto 10</h3>
+                    <img class="card-img-top" src="img/10.jpg" alt="" style="height: 250px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Producto</h3>
+                        <p class="card-text">Descripción del producto</p>
+                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto10">Detalles</button>
+                        <div class="modal fade" id="producto10" tabindex="-1" role="dialog" aria-labelledby="producto10"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <img style="width: 200px;" src="img/10.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p>Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                            Aqui va la descripcion del producto
-                                        </p>
+                                    <div class="modal-body"
+                                        style="display: flex; flex-direction: column; align-items: center;">
+                                        <div class="mb-2">
+                                            <h3>Producto 10</h3>
+                                        </div>
+                                        <div class="mb-2">
+                                            <img style="width: 200px;" src="img/10.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <p>Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                                Aqui va la descripcion del producto
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -629,10 +645,10 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <h4>Síguenos en </h4>
                     <div style="display: flex; flex-direction: column;">
-                        <a href="https://www.facebook.com/ZibaBelleza" target="_blank"><i
+                        <a style="text-align: left;" href="https://www.facebook.com/ZibaBelleza" target="_blank"><i
                                 class="fab fa-facebook"></i>Facebook</a>
-                        <a href="https://instagram.com/zibabelleza?igshid=6802q6h6htzp" target="_blank"><i
-                                class="fab fa-instagram-square"></i> Instagram</a>
+                        <a style="text-align: left;" href="https://instagram.com/zibabelleza?igshid=6802q6h6htzp"
+                            target="_blank"><i class="fab fa-instagram-square"></i> Instagram</a>
                     </div>
                 </div>
                 <hr>
