@@ -47,6 +47,9 @@ a:hover {
 
 h4 {
     color: white;
-    text-align: left;
-    
+    text-align: left;   
+}
+
+.footer-container {
+    background-color:black;
 }
