@@ -16,11 +16,11 @@ body {
 }
 
 .heade>.logo {
-    margin-left: 7%;
+    margin-left: 13%;
 }
 
 .heade>.cuenta {
-    margin-right: 7%;
+    margin-right: 10%;
 }
 .heade>.cuenta > a {
     display: block;
