@@ -1,111 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos.css">
     <title>Zibá ¡es como tú!</title>
-    <style>
-        body {
-            margin-top: 130px;
-        }
-    </style>
-
 </head>
 
-<body>
-    <header class="fixed-top">
-        <div class="heade">
-            <div class="logo">
-                <img src="img/Logo.jpeg" alt="" style="height: 60px;">
-            </div>
-            <div class="cuenta">
-                <a href="pagSecundarias/miCuenta.html">Mi cuenta</a>
-                <a href="">Carrito de compras </a>
-            </div>
-        </div>
-        <div class="bg-dark text-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                            <div class="container">
-                                <a href="index.html" class="navbar-brand">Inicio</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#menuNavegacion" aria-expanded="false" aria-label="Alternar menú">
-                                    <span class="navbar-toggle-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="menuNavegacion">
-                                    <ul class="navbar-nav mr-auto">
-                                        <li class="nav-item dropdown mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown"
-                                                data-toggle="dropdown">
-                                                Marcas
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown">
-                                                <a href="#" class="dropdown-item">Marca 1</a>
-                                                <a href="#" class="dropdown-item">Marca 2</a>
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item dropdown  mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown1"
-                                                data-toggle="dropdown">
-                                                Maquillaje
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown1">
-                                                <a href="#" class="dropdown-item">Maquillaje 1</a>
-                                                <a href="#" class="dropdown-item">Maquillaje 2</a>
-
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item dropdown  mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown2"
-                                                data-toggle="dropdown">
-                                                Capilar
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown2">
-                                                <a href="#" class="dropdown-item">ca 1</a>
-                                                <a href="#" class="dropdown-item">ca 2</a>
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item dropdown  mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown3"
-                                                data-toggle="dropdown">
-                                                Cuidado personal
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown3">
-                                                <a href="#" class="dropdown-item">Cuidado 1</a>
-                                                <a href="#" class="dropdown-item">Cuidado 2</a>
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item  mx-lg-2">
-                                            <a href="" class="nav-link">Otros</a>
-                                        </li>
-                                    </ul>
-                                    <form action="" class="form-inline w-100" my-2 my-lg-0>
-                                        <input type="text" class="form-control mr-sm-2" type="search"
-                                            placeholder="¿Qué estás buscando?">
-                                        <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
+<body class>
+    <?php include('header1.php'); ?>
     <main class="container">
         <div class="row d-flex justify-content-around mt-3" id="promociones">
             <div class="col">
@@ -176,8 +80,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto1">Detalles</button>
-                        <div class="modal fade" id="producto1" tabindex="-1" role="dialog" aria-labelledby="producto1"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto1" tabindex="-1" role="dialog" aria-labelledby="producto1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -186,8 +89,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 1</h3>
                                         </div>
@@ -218,8 +120,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto2">Detalles</button>
-                        <div class="modal fade" id="producto2" tabindex="-1" role="dialog" aria-labelledby="producto2"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto2" tabindex="-1" role="dialog" aria-labelledby="producto2" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -228,8 +129,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 2</h3>
                                         </div>
@@ -260,8 +160,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto3">Detalles</button>
-                        <div class="modal fade" id="producto3" tabindex="-1" role="dialog" aria-labelledby="producto3"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto3" tabindex="-1" role="dialog" aria-labelledby="producto3" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -270,8 +169,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 3</h3>
                                         </div>
@@ -302,8 +200,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto4">Detalles</button>
-                        <div class="modal fade" id="producto4" tabindex="-1" role="dialog" aria-labelledby="producto4"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto4" tabindex="-1" role="dialog" aria-labelledby="producto4" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -312,8 +209,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 4</h3>
                                         </div>
@@ -344,8 +240,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto5">Detalles</button>
-                        <div class="modal fade" id="producto5" tabindex="-1" role="dialog" aria-labelledby="producto5"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto5" tabindex="-1" role="dialog" aria-labelledby="producto5" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -354,8 +249,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 5</h3>
                                         </div>
@@ -386,8 +280,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto6">Detalles</button>
-                        <div class="modal fade" id="producto6" tabindex="-1" role="dialog" aria-labelledby="producto6"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto6" tabindex="-1" role="dialog" aria-labelledby="producto6" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -396,8 +289,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 6</h3>
                                         </div>
@@ -428,8 +320,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto7">Detalles</button>
-                        <div class="modal fade" id="producto7" tabindex="-1" role="dialog" aria-labelledby="producto7"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto7" tabindex="-1" role="dialog" aria-labelledby="producto7" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -438,8 +329,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 7</h3>
                                         </div>
@@ -470,8 +360,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto8">Detalles</button>
-                        <div class="modal fade" id="producto8" tabindex="-1" role="dialog" aria-labelledby="producto8"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto8" tabindex="-1" role="dialog" aria-labelledby="producto8" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -480,8 +369,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 8</h3>
                                         </div>
@@ -512,8 +400,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto9">Detalles</button>
-                        <div class="modal fade" id="producto9" tabindex="-1" role="dialog" aria-labelledby="producto9"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto9" tabindex="-1" role="dialog" aria-labelledby="producto9" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -522,8 +409,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 9</h3>
                                         </div>
@@ -554,8 +440,7 @@
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto10">Detalles</button>
-                        <div class="modal fade" id="producto10" tabindex="-1" role="dialog" aria-labelledby="producto10"
-                            aria-hidden="true">
+                        <div class="modal fade" id="producto10" tabindex="-1" role="dialog" aria-labelledby="producto10" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -564,8 +449,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body"
-                                        style="display: flex; flex-direction: column; align-items: center;">
+                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
                                             <h3>Producto 10</h3>
                                         </div>
@@ -592,68 +476,8 @@
 
     </main>
 
-    <footer class="footer-container">
-        <div class="bg-dark text-white pt-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <p style="text-align: left;">Conéctate con nosotros en las redes sociales!</p>
-                    </div>
-                    <div class="col-lg-1">
-                        <a style="text-align: left;" href="https://www.facebook.com/ZibaBelleza" target="_blank"><i
-                            class="fab fa-facebook-square"></i></a>        
-                    </div>    
-                    <div class="col-lg-1">
-                        <a style="text-align: left;" href="https://instagram.com/zibabelleza?igshid=6802q6h6htzp" target="_blank"><i
-                            class="fab fa-instagram-square"></i></a>
-                    </div>    
-                    <div class="col-lg-1">
-                        <a style="text-align: left;" href="https://instagram.com/zibabelleza?igshid=6802q6h6htzp" target="_blank"><i
-                            class="fab fa-whatsapp-square"></i></a>
-                    </div>    
-                </div>
-            </div>
-        </div>
-        <div class="container pt-4">
-            <div class="row pb-4">
-                <div class="col-12 col-md-6 col-lg-3">
-                    <h4>Empresa</h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="pagSecundarias/acercaNosotros.html">Acerca de nosotros</a>
-                        <a style="text-align: left;" href="pagSecundarias/contacto.html">Contactos</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <h4>Información</h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="pagSecundarias/envios.html">Envíos y devoluciones</a>
-                        <a style="text-align: left;" href="pagSecundarias/formasPago.html">Formas de pago</a>
-                        <a style="text-align: left;" href="index.html">Promociones vigentes</a>
-
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <h4>Legal</h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="terminosYcondiciones.html">Términos y condiciones</a>
-                        <a style="text-align: left;" href="politicaPrivacidad.html">Política de privacidad</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <h4>Síguenos en </h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="https://www.facebook.com/ZibaBelleza" target="_blank"><i
-                                class="fab fa-facebook-square"></i> Facebook</a>
-                        <a style="text-align: left;" href="https://instagram.com/zibabelleza?igshid=6802q6h6htzp"
-                            target="_blank"><i class="fab fa-instagram-square"></i> Instagram</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php include('footer.php');?>
+   
 
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/popper.min.js"></script>

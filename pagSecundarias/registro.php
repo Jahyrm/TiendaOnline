@@ -10,17 +10,8 @@
 
 </head>
 
-<body>
-    <header>
-        <div class="heade">
-            <div class="logo">
-                <img src="../img/Logo.jpeg" alt="" style="height: 60px;">
-            </div>
-            <div class="cuenta">
-                <a href="../index.html">Página principal</a>
-            </div>
-        </div>
-    </header>
+<body> 
+<?php include('../headerSecudario.php'); ?>
 
     <main class="container">
         <div class="row mt-4" style="margin-bottom: 80px;">
@@ -124,48 +115,8 @@
             </div>
         </div>
     </main>
+    <?php include('../footer2.php');?>
 
-    <footer style="background-color:rgb(39, 27, 27);">
-        <div class="container pt-2">
-            <div class="row pb-2">
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <h4>Síguenos en </h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="https://www.facebook.com/ZibaBelleza" target="_blank"><i
-                                class="fab fa-facebook"></i>Facebook</a>
-                        <a style="text-align: left;" href="https://instagram.com/zibabelleza?igshid=6802q6h6htzp"
-                            target="_blank"><i class="fab fa-instagram-square"></i> Instagram</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <h4>Empresa</h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="acercaNosotros.html">Acerca de nosotros</a>
-                        <a style="text-align: left;" href="contacto.html">Contactos</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <h4>Información</h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="envios.html">Envíos y devoluciones</a>
-                        <a style="text-align: left;" href="formasPago.html">Formas de pago</a>
-                        <a style="text-align: left;" href="../index.html">Promociones vigentes</a>
-
-                    </div>
-                </div>
-                <hr>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <h4>Legal</h4>
-                    <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="terminosYcondiciones.html">Términos y condiciones</a>
-                        <a style="text-align: left;" href="politicaPrivacidad.html">Política de privacidad</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="../js/jquery-3.5.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
