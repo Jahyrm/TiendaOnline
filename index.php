@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="py-4 border-bottom">
-                    <h1 class="text-center">Productos en stock</h1>
+                    <h1 class="text-center">ZIBÁ te ofrece productos de calidad</h1>
                 </div>
             </div>
         </div>
@@ -74,35 +74,32 @@
         <?php $lista = json_decode( file_get_contents('http://localhost:5000/api/products/productos'), true );?>
         <?php foreach ($lista as $product){ ?>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
-                <div class="card">
+                <div class="card mx-auto">
                     <img class="card-img-top" src=<?php echo $product['imagen'];?> alt="" style="height: 250px;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $product['nombre'];?></h5>
-                        <p class="card-text">Descripción del producto</p>
-                        <a href="" class="btn btn-sm btn-primary">Comprar</a>
-                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto1">Detalles</button>
-                        <div class="modal fade" id="producto1" tabindex="-1" role="dialog" aria-labelledby="producto1" aria-hidden="true">
+                        <h5 class="card-title">Precio $<?php echo $product['precio'];?></h5>
+                        <p class="card-text"><?php echo $product['descripcion'];?></p>
+                        <button class="btn btn-dark mb-1">Agregar al carrito</button>
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#producto<?php echo $product['id_producto'];?>">Detalles del producto</button>
+                        <div class="modal fade" id="producto<?php echo $product['id_producto'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $product['id_producto'];?>" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Detalles del producto</h4>
+                                        <h5 class="modal-title">Detalles del producto</h5>
                                         <button class="close" data-dismiss="modal" aria-label="Cerrar">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
-                                            <h3>Producto 1</h3>
+                                            <h3><?php echo $product['nombre'];?></h3>
                                         </div>
                                         <div class="mb-2">
-                                            <img style="width: 200px;" src="chrome://global/skin/media/imagedoc-darknoise.png" alt="">
+                                            <img style="width: 200px;" src=<?php echo $product['imagen'];?> alt="">
                                         </div>
                                         <div>
-                                            <p>Aqui va la descripcion del producto
-                                                Aqui va la descripcion del producto
-                                                Aqui va la descripcion del producto
-                                                Aqui va la descripcion del producto
-                                                Aqui va la descripcion del producto
+                                            <p><?php echo $product['descripcion'];?>
                                             </p>
                                         </div>
                                     </div>
