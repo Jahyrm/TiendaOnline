@@ -71,13 +71,13 @@
         </div>
 
         <div class="row py-4">
-        <?php $lista = json_decode( file_get_contents('http://localhost:5000/api/categorias/categorias'), true );?>
+        <?php $lista = json_decode( file_get_contents('http://localhost:5000/api/products/productos'), true );?>
         <?php foreach ($lista as $product){ ?>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                    <img class="card-img-top" src="https://drive.google.com/file/d/1hapwIXN71NIr4blnOtuun5ZiZJ0xFeTe/view?usp=sharing" alt="" style="height: 250px;">
+                    <img class="card-img-top" src=<?php echo $product['imagen'];?> alt="" style="height: 250px;">
                     <div class="card-body">
-                        <h3 class="card-title"><?php echo $product['nombre'];?></h3>
+                        <h5 class="card-title"><?php echo $product['nombre'];?></h5>
                         <p class="card-text">Descripción del producto</p>
                         <a href="" class="btn btn-sm btn-primary">Comprar</a>
                         <button class="btn btn-dark" data-toggle="modal" data-target="#producto1">Detalles</button>
