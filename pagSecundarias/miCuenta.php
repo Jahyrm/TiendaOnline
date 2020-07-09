@@ -24,7 +24,7 @@
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Iniciar sesión</h2>
                     <p style="display: block;text-align: center;">Bienvenido de regreso</p>
-                    <form action="" id="formSesion" name="formSesion">
+                    <form action="../index.php" id="formSesion" name="formSesion" method="POST">
                         <div class="form-group row px-4 ">
                             <div class="col-12 mb-3">
                                 <label for="correo">Correo</label>
@@ -44,6 +44,8 @@
                                 <input type="submit" class="btn btn-dark btn-block " value="Ingresar">
                             </div>
                         </div>
+                       
+
                     </form>
                     <p style="display: block;text-align: center;">O</p>
                     <div>

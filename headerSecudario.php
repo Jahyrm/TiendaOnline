@@ -17,6 +17,7 @@
                                 <a href="../index.php" class="navbar-brand">Inicio</a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion" aria-expanded="false" aria-label="Alternar menú">
                                     <span class="navbar-toggle-icon"></span>
+                                    
                                 </button>
                                 <div class="collapse navbar-collapse" id="menuNavegacion">
                                     <ul class="navbar-nav mr-auto">

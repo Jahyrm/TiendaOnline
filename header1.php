@@ -5,7 +5,7 @@
             </div>
             <div class="cuenta">
                 <a href="pagSecundarias/miCuenta.php">Mi cuenta</a>
-                <a href="">Carrito de compras </a>
+                <a href="">Carrito de compras (0) </a>
             </div>
         </div>
         <div style="background-color:#263238">
