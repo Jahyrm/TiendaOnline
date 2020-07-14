@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <title>Mi cuenta</title>
     <style>
         .error{
             display: none;
         }
     </style>
-
 </head>
 
 <body>
-    <?php include('../headerSecudario.php'); ?>
-
+    <?php include('header1.php'); ?>
     <main class="container">
         <div class="row mt-4 mb-4 align-items-center" style="height: 658px;">
             <div class="col-12 col-lg-6 align-items-center justify-content-center pb-3">
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Iniciar sesión</h2>
                     <p style="display: block;text-align: center;">Bienvenido de regreso</p>
-                    <form action="../index.php" id="formSesion" name="formSesion" method="POST">
+                    <form action="index.php" id="formSesion" name="formSesion" method="POST">
                         <div class="form-group row px-4 ">
                             <div class="col-12 mb-3">
                                 <label for="correo">Correo</label>
@@ -73,13 +70,13 @@
         </div>
     </main>
 
-    <?php include('../footer2.php');?>
+    <?php include('footer.php');?>
 
-    <script src="../js/jquery-3.5.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
-    <script src="../js/formularioCuenta.js"></script>
+    <script src="js/formularioCuenta.js"></script>
 </body>
 
 </html>

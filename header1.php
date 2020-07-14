@@ -1,20 +1,69 @@
+<div style="display: none;">
+<?php
+    $data = array(
+        'usernameOrEmail' => $_POST['correo'],
+        'password' => $_POST['password']
+    );
+    $payload = json_encode($data);  
+    // Prepare new cURL resource
+    $ch = curl_init('https://zibawebfinal.herokuapp.com/api/auth/signin');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);   
+    // Set HTTP Header for POST request 
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($payload))
+    );    
+    // Submit the POST request
+    $result = curl_exec($ch);
+    $lista = json_decode($result); 
+    $token ="";
+    $tipo="";
+    $nombre2 = "";
+    $contraseña="";
+    $rol="";
+    $array2[] = "";
+
+    foreach ($lista as $tokenI){
+    $nombre = $tokenI;
+    $array2[] = $tokenI;
+    
+    }
+    // Close cURL session handle
+    curl_close($ch);
+    
+    ?>
+
+</div>
 <header class="fixed-top">
         <div class="heade">
             <div class="logo">
                 <img src="Logo.jpeg" alt="" style="height: 60px;">
             </div>
             <div class="cuenta">
-                <a href="pagSecundarias/miCuenta.php">Mi cuenta</a>
+                <?php 
+                if(strlen($array2[1]) > 50){?>
+                    <a href="miCuenta.php"><?php  echo($array2[3]);?></a>
+                    
+                <?php } 
+                else{?>
+                    <a href="miCuenta.php">Mi cuenta</a>
+                <?php }
+                ?>
+                
                 <a href="">Carrito de compras (0) </a>
             </div>
         </div>
+        
         <div style="background-color:#263238">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                             <div class="container">
-                                <a href="../index.php" class="navbar-brand">Inicio</a>
+                                <a href="../index.php" class="navbar-brand">Inicio </a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion" aria-expanded="false" aria-label="Alternar menú">
                                     <span class="navbar-toggle-icon"></span>
                                 </button>

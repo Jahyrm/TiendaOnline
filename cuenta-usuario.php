@@ -12,7 +12,7 @@
 </head>
 
 <body class>
-    <?php include('../headerSecudario.php'); ?>
+    <?php include('header1.php'); ?>
     <main class="container">
 
         <div class="row d-flex justify-content-around mt-3">
@@ -101,11 +101,11 @@
         </div>
     </main>
 
-    <?php include('../footer2.php'); ?>
+    <?php include('footer.php'); ?>
 
-    <script src="../js/jquery-3.5.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
 </body>
 

@@ -26,17 +26,17 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <h4>Empresa</h4>
                     <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="pagSecundarias/acercaNosotros.php">Acerca de nosotros</a>
-                        <a style="text-align: left;" href="pagSecundarias/contacto.php">Contactos</a>
+                        <a style="text-align: left;" href="acercaNosotros.php">Acerca de nosotros</a>
+                        <a style="text-align: left;" href="contacto.php">Contactos</a>
                     </div>
                 </div>
                 <hr>
                 <div class="col-12 col-md-6 col-lg-3">
                     <h4>Información</h4>
                     <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="pagSecundarias/envios.php">Envíos y devoluciones</a>
-                        <a style="text-align: left;" href="pagSecundarias/formasPago.php">Formas de pago</a>
-                        <a style="text-align: left;" href="index.html">Promociones vigentes</a>
+                        <a style="text-align: left;" href="envios.php">Envíos y devoluciones</a>
+                        <a style="text-align: left;" href="formasPago.php">Formas de pago</a>
+                        <a style="text-align: left;" href="index.php">Promociones vigentes</a>
 
                     </div>
                 </div>

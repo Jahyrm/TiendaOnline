@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <title>Formas de pago</title>
 
 </head>
 
 <body> 
-<?php include('../header1.php'); ?>
+<?php include('header1.php'); ?>
 
     <main class="container" style="margin-top: 260px; margin-bottom: 200px;">
         <div class="row">
@@ -42,11 +42,11 @@
 
 
     </main>
-    <?php include('../footer2.php');?>
+    <?php include('footer.php');?>
 
-    <script src="../js/jquery-3.5.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
 </body>
 
