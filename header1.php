@@ -6,7 +6,7 @@
     );
     $payload = json_encode($data);  
     // Prepare new cURL resource
-    $ch = curl_init('https://zibawebfinal.herokuapp.com/api/auth/signin');
+    $ch = curl_init('http://localhost:5000/api/auth/signin');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLINFO_HEADER_OUT, true);
     curl_setopt($ch, CURLOPT_POST, true);
@@ -46,6 +46,7 @@
                 <?php 
                 if(strlen($array2[1]) > 50){?>
                     <a href="miCuenta.php"><?php  echo($array2[3]);?></a>
+                    <a href="miCuenta.php">Cerrar sesión</a>
                     
                 <?php } 
                 else{?>
@@ -63,7 +64,7 @@
                     <div class="col">
                         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                             <div class="container">
-                                <a href="../index.php" class="navbar-brand">Inicio </a>
+                                <a href="index.php" class="navbar-brand">Inicio </a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion" aria-expanded="false" aria-label="Alternar menú">
                                     <span class="navbar-toggle-icon"></span>
                                 </button>

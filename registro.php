@@ -18,7 +18,7 @@
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Se parte de nuestra familia Zibá</h2>
                     <hr>
-                    <form action="registro.php" method="POST" class="needs-validation" novalidate>
+                    <form action="registro.php" method="POST">
                         <div class="form-group row px-4 mb-2">
                             <div class="col-12 col-md-6">
                                 <label for="nombre">Nombre</label>
@@ -84,8 +84,31 @@
             </div>
         </div>
     </main>
+<<<<<<< HEAD
+    <!-- Modal 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Usuario registrado
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div style="display: none;"> 
+=======
 
+<<<<<<< HEAD
     <div>
+=======
+    <div style="display: none;">
+>>>>>>> a02b9eebbc09ad7335d3cc26677f0fb787f7b604
+>>>>>>> d209bf6fddbdd2842d96c391f79661567eba84f7
         <?php
         $data = array(
             'apellido' => $_POST['apellido'],
