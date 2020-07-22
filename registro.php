@@ -22,7 +22,7 @@
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Se parte de nuestra familia Zibá</h2>
                     <hr>
-                    <form action="index.php" method="POST">
+                    <form action="registro.php" method="POST">
                         <div class="form-group row px-4 mb-2">
                             <div class="col-12 col-md-6">
                                 <label for="nombre">Nombre</label>
@@ -77,7 +77,7 @@
             </div>
         </div>
     </main>
-    <!-- Modal -->
+    <!-- Modal 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -91,8 +91,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div style="display: none;">
+    </div> -->
+    <div style="display: none;"> 
         <?php
         $data = array(
             'apellido' => $_POST['apellido'],
