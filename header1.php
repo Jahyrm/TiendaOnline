@@ -45,7 +45,7 @@
             <div class="cuenta">
                 <?php 
                 if(strlen($array2[1]) > 50){?>
-                    <a href="miCuenta.php"><?php  echo($array2[3]);?></a>
+                    <a href="miCuenta.php"><?php  echo($array2[4]);?></a>
                     <a href="miCuenta.php">Cerrar sesión</a>
                     
                 <?php } 
