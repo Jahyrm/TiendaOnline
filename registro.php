@@ -59,7 +59,7 @@
                         <div class="form-group row px-4 mb-2">
                             <div class="col">
                                 <label class="form-check-label">
-                                    <input type="checkbox" name="terminos" id="terminos" class="form-check-input mr-2">
+                                    <input type="checkbox" name="terminos" id="terminos" class="form-check-input mr-2" required>
                                     He leído y acepto los términos y condiciones de uso
                                 </label>
                                 <div class="valid-feedback">Válido</div>
@@ -85,7 +85,7 @@
         </div>
     </main>
 
-    <div style="display: none;">
+    <div>
         <?php
         $data = array(
             'apellido' => $_POST['apellido'],
@@ -138,6 +138,7 @@
             }, false);
         })();
     </script>
+
     <script src="validar-registro.php"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/popper.min.js"></script>
