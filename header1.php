@@ -74,8 +74,10 @@
                                                 Marcas
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="#navbarDropdown">
-                                                <a href="#" class="dropdown-item">Marca 1</a>
-                                                <a href="#" class="dropdown-item">Marca 2</a>
+                                            <?php $lista = json_decode( file_get_contents('https://zibawebfinal.herokuapp.com/api/marcas/marcas'), true );?>
+                                            <?php foreach ($lista as $marca){ ?>
+                                                <a href="#" class="dropdown-item"><?php echo $marca['nombre'];?></a>
+                                            <?php } ?>
                                             </div>
                                         </li>
 
