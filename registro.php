@@ -14,7 +14,7 @@
 
 
 
-   
+
     <?php include('header1.php'); ?>
     <main class="container">
         <div class="row mt-4" style="margin-bottom: 100px;">
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="col-12 mt-3">
-                            <input type="submit" class="btn btn-dark btn-block " value="Registrarse" name="registrarse">
+                            <input type="submit" class="btn btn-dark btn-block " value="Registrarse" name="registrarse" data-toggle="modal" data-target="#exampleModal">
                         </div>
                     </form>
                     <p style="display: block;text-align: center;">O</p>
@@ -77,14 +77,29 @@
             </div>
         </div>
     </main>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Usuario registrado
+                </div>
+            </div>
+        </div>
+    </div>
     <div style="display: none;">
         <?php
         $data = array(
-        'apellido' => $_POST['apellido'],
-        'email' => $_POST['correo'],
-        'name' => $_POST['nombre'],
-        'password' => $_POST['contrasena'],
-        'username' => $_POST['usuario'],
+            'apellido' => $_POST['apellido'],
+            'email' => $_POST['correo'],
+            'name' => $_POST['nombre'],
+            'password' => $_POST['contrasena'],
+            'username' => $_POST['usuario'],
         );
         $payload = json_encode($data);
 
@@ -97,8 +112,8 @@
 
         // Set HTTP Header for POST request 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'Content-Type: application/json',
-        'Content-Length: ' . strlen($payload)
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($payload)
         ));
 
         // Submit the POST request
