@@ -99,18 +99,7 @@
             </div>
         </div>
     </div> -->
-    <div style="display: none;"> 
-<<<<<<< HEAD
-=======
-=======
-
-<<<<<<< HEAD
-    <div>
-=======
     <div style="display: none;">
->>>>>>> a02b9eebbc09ad7335d3cc26677f0fb787f7b604
->>>>>>> d209bf6fddbdd2842d96c391f79661567eba84f7
->>>>>>> 10256a8f3499de52f994dcf1952644d92127ff82
         <?php
         $data = array(
             'apellido' => $_POST['apellido'],
