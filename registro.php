@@ -11,6 +11,10 @@
 </head>
 
 <body>
+
+
+
+   
     <?php include('header1.php'); ?>
     <main class="container">
         <div class="row mt-4" style="margin-bottom: 100px;">
@@ -18,7 +22,7 @@
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Se parte de nuestra familia Zibá</h2>
                     <hr>
-                    <form action="" method="post">
+                    <form action="index.php" method="POST">
                         <div class="form-group row px-4 mb-2">
                             <div class="col-12 col-md-6">
                                 <label for="nombre">Nombre</label>
@@ -43,11 +47,7 @@
                         <div class="form-group row px-4 mb-2">
                             <div class="col-12 col-md-6 mb-3">
                                 <label for="contraseña">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="contraseña" id="contraseña">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label for="Ccontraseña">Confirmar contraseña</label>
-                                <input type="password" class="form-control" placeholder="Confirmar contraseña" name="Ccontraseña" id="Ccontraseña">
+                                <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="contrasena" id="contrasena">
                             </div>
                         </div>
                         <div class="form-group row px-4 mb-2">
@@ -77,6 +77,37 @@
             </div>
         </div>
     </main>
+    <div style="display: none;">
+        <?php
+        $data = array(
+        'apellido' => $_POST['apellido'],
+        'email' => $_POST['correo'],
+        'name' => $_POST['nombre'],
+        'password' => $_POST['contrasena'],
+        'username' => $_POST['usuario'],
+        );
+        $payload = json_encode($data);
+
+        // Prepare new cURL resource
+        $ch = curl_init('http://localhost:5000/api/auth/signup');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+        // Set HTTP Header for POST request 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($payload)
+        ));
+
+        // Submit the POST request
+        $result = curl_exec($ch);
+        echo ($result);
+        // Close cURL session handle
+        curl_close($ch);
+        ?>
+    </div>
     <?php include('footer.php'); ?>
 
     <script src="validar-registro.php"></script>
