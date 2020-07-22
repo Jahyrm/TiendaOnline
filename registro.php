@@ -59,7 +59,7 @@
                         <div class="form-group row px-4 mb-2">
                             <div class="col">
                                 <label class="form-check-label">
-                                    <input type="checkbox" name="terminos" id="terminos" class="form-check-input mr-2">
+                                    <input type="checkbox" name="terminos" id="terminos" class="form-check-input mr-2" required>
                                     He leído y acepto los términos y condiciones de uso
                                 </label>
                                 <div class="valid-feedback">Válido</div>
@@ -100,6 +100,17 @@
         </div>
     </div> -->
     <div style="display: none;"> 
+<<<<<<< HEAD
+=======
+=======
+
+<<<<<<< HEAD
+    <div>
+=======
+    <div style="display: none;">
+>>>>>>> a02b9eebbc09ad7335d3cc26677f0fb787f7b604
+>>>>>>> d209bf6fddbdd2842d96c391f79661567eba84f7
+>>>>>>> 10256a8f3499de52f994dcf1952644d92127ff82
         <?php
         $data = array(
             'apellido' => $_POST['apellido'],
@@ -152,6 +163,7 @@
             }, false);
         })();
     </script>
+
     <script src="validar-registro.php"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/popper.min.js"></script>
