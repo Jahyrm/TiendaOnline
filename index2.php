@@ -82,7 +82,7 @@
     $fb = new Facebook\Facebook([
         'app_id' => '578068732879707',
         'app_secret' => '83affb90e47046b413dd0e84c26ebc20',
-        'default_graph_version' => 'v7.0',
+        'default_graph_version' => 'v2.3',
     ]);
 
     $helper = $fb->getRedirectLoginHelper();
