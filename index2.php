@@ -88,10 +88,10 @@
     $helper = $fb->getRedirectLoginHelper();
 
     $permissions = ['email']; // Optional permissions
-    $redirectURL = "https://" . $_SERVER['SERVER_NAME'] . "/fb-callback.php";
+    $redirectURL = "https://zibareal.herokuapp.com" . "/fb-callback.php";
     $loginUrl = $helper->getLoginUrl($redirectURL, $permissions);
     echo '<a href="' . $loginUrl . '">Log in con Facebook!</a>';
-
+    
     ?>
 
 
