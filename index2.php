@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,14 +75,14 @@
 
     </main>
 
-    <?php include('footer.php');?>
+    <?php include('footer.php'); ?>
     <?php
     session_start();
     require_once  'vendor/autoload.php';
     $fb = new Facebook\Facebook([
-        'app_id' => 'id de la app de facebook',
-        'app_secret' => 'clave secreta',
-        'default_graph_version' => 'v3.2',
+        'app_id' => '578068732879707',
+        'app_secret' => '83affb90e47046b413dd0e84c26ebc20',
+        'default_graph_version' => 'v7.0',
     ]);
 
     $helper = $fb->getRedirectLoginHelper();
