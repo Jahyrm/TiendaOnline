@@ -1,24 +1,71 @@
+<?php 
+session_start();
+
+if(isset($_COOKIE['logincookie'])) {
+	if (!isset($_SESSION['Recuperado'])) {
+		include 'logic/funciones.php';
+		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
+		recuperarUser($id);
+	}
+}
+
+$titulo = "Registrarse";
+
+require_once 'fb/config.php';
+require_once 'google/config.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+    <head>
+<?php include('head.php') ?>
+    </head>
+    <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>Registrarse</title>
+<?php if (isset($_GET['mensaje'])) {
+	switch($_GET['mensaje']) {
+		case 1:
+			$mensaje = "Error en el sistema, intente más tarde.";
+			break;
+		case 2:
+			$mensaje = "Ya exite una cuenta asociada a ese correo. Intenta iniciar sesión con facebook/google.";
+			break;
+		case 3:
+			$mensaje = "Error: Ya existe una cuenta con ese correo.";
+			break;
+		case 4:
+			$mensaje = "Registrado correctamente.";
+			break;
+	}
+}
+?>
 
-</head>
 
 <body>
-    <?php include('header1.php'); ?>
+    <?php include('header.php'); ?>
     <main class="container">
         <div class="row mt-4" style="margin-bottom: 100px;">
             <div class="col-12 align-items-center justify-content-center pb-3">
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Se parte de nuestra familia Zibá</h2>
                     <hr>
-                    <form action="registro.php" method="POST">
+
+<?php if (isset($mensaje)) { ?>
+							<div id="mensaje" style="display: inline-block; width: 100%; background-color:<?php if ($_GET['mensaje']==4) { echo ' darkgreen'; } else if ($_GET['mensaje']==2) { echo ' skyblue'; } else { echo ' darkred'; } ?>; color: white;">
+								<br>
+								<center><h6 id="mensajeString"><?php echo $mensaje; ?></h6></center>
+								<br>
+							</div>
+                    <?php } else { ?>
+							<div id="mensaje" style="display: none; width: 100%; background-color: darkgreen; color: white;">
+								<br>
+								<center><h6 id="mensajeString"></h6></center>
+								<br>
+							</div>
+<?php } ?>
+
+
+                    <form action="logic/registro.php" method="POST">
                         <div class="form-group row px-4 mb-2">
                             <div class="col-12 col-md-6">
                                 <label for="nombre">Nombre</label>
@@ -74,8 +121,16 @@
                     <div>
                         <p style="display: inline;">Registrarse con </p>
                         <div style="display: inline;">
-                            <button class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</button>
-                            <button class="btn btn-primary"><i class="fab fa-google-plus"></i> Google</button>
+                        <?php 
+                        if(isset($facebook_login_url)){
+                            echo $facebook_login_url;
+                        } 
+                        if(isset($login_button)){
+                            echo $login_button;
+                        }
+                        ?>
+                            <!--<button class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</button>-->
+                            <!-- <button class="btn btn-primary"><i class="fab fa-google-plus"></i> Google</button> -->
 
 
                         </div>
@@ -99,37 +154,6 @@
             </div>
         </div>
     </div> -->
-    <div style="display: none;">
-        <?php
-        $data = array(
-            'apellido' => $_POST['apellido'],
-            'email' => $_POST['correo'],
-            'name' => $_POST['nombre'],
-            'password' => $_POST['contrasena'],
-            'username' => $_POST['usuario'],
-        );
-        $payload = json_encode($data);
-
-        // Prepare new cURL resource
-        $ch = curl_init('http://localhost:5000/api/auth/signup');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-
-        // Set HTTP Header for POST request 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($payload)
-        ));
-
-        // Submit the POST request
-        $result = curl_exec($ch);
-        echo ($result);
-        // Close cURL session handle
-        curl_close($ch);
-        ?>
-    </div>
     <?php include('footer.php'); ?>
 
     <script>
@@ -152,6 +176,14 @@
             }, false);
         })();
     </script>
+
+<?php if(isset($mensaje)) { ?>
+		<script language="javascript" type="text/javascript">
+			window.onload = function() {
+				$('#mensaje').delay(4000).fadeOut('slow')
+			}
+		</script>
+<?php } ?>
 
     <script src="validar-registro.php"></script>
     <script src="js/jquery-3.5.1.min.js"></script>

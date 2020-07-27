@@ -1,16 +1,29 @@
+<?php 
+session_start();
+
+if(isset($_COOKIE['logincookie'])) {
+	if (!isset($_SESSION['Recuperado'])) {
+		include 'logic/funciones.php';
+		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
+		recuperarUser($id);
+	}
+}
+
+$titulo = "Zibá ¡es como tú!";
+include("datos/conexion.php");
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>Zibá ¡es como tú!</title>
-</head>
+<html lang="es">
+    <head>
+<?php include('head.php') ?>
+    </head>
+    <body>
 
 
-<body class>
-    <?php include('header1.php'); ?>
+    <?php include('header.php'); ?>
+
     <main class="container">
         <div class="row d-flex justify-content-around mt-3" id="promociones">
             <div class="col">
@@ -72,18 +85,18 @@
         </div>
 
         <div class="row py-4">
-        <?php $lista = json_decode( file_get_contents('http://localhost:5000/api/products/productos'), true );?>
-        <?php foreach ($lista as $product){ ?>
+        <?php $lista = json_decode( file_get_contents('https://zibareal.herokuapp.com/api/product/read.php'), true );?>
+        <?php foreach ($lista["records"] as $product){ ?>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card mx-auto">
-                    <img class="card-img-top" src=<?php echo $product['imagen'];?> alt="" style="height: 250px;">
+                    <img class="card-img-top" src=<?php echo $product['image'];?> alt="" style="height: 250px;">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $product['nombre'];?></h5>
-                        <h5 class="card-title">Precio $<?php echo $product['precio'];?></h5>
-                        <p class="card-text"><?php echo $product['descripcion'];?></p>
+                        <h5 class="card-title"><?php echo $product['name'];?></h5>
+                        <h5 class="card-title">Precio $<?php echo $product['price'];?></h5>
+                        <p class="card-text"><?php echo $product['description'];?></p>
                         <button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button>
                         <button class="btn btn-dark" style="width: 100%;" data-toggle="modal" data-target="#producto<?php echo $product['id_producto'];?>">Detalles del producto</button>
-                        <div class="modal fade" id="producto<?php echo $product['id_producto'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $product['id_producto'];?>" aria-hidden="true">
+                        <div class="modal fade" id="producto<?php echo $product['id'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $product['id_producto'];?>" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -94,13 +107,13 @@
                                     </div>
                                     <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
                                         <div class="mb-2">
-                                            <h3><?php echo $product['nombre'];?></h3>
+                                            <h3><?php echo $product['name'];?></h3>
                                         </div>
                                         <div class="mb-2">
-                                            <img style="width: 200px;" src=<?php echo $product['imagen'];?> alt="">
+                                            <img style="width: 200px;" src=<?php echo $product['image'];?> alt="">
                                         </div>
                                         <div>
-                                            <p><?php echo $product['descripcion'];?>
+                                            <p><?php echo $product['description'];?>
                                             </p>
                                         </div>
                                     </div>

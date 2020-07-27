@@ -1,27 +1,73 @@
+<?php 
+session_start();
+
+if(isset($_COOKIE['logincookie'])) {
+	if (!isset($_SESSION['Recuperado'])) {
+		include 'logic/funciones.php';
+		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
+		recuperarUser($id);
+	}
+}
+
+$titulo = "Mi cuenta";
+
+
+require_once 'fb/config.php';
+require_once 'google/config.php';
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>Mi cuenta</title>
+<html lang="es">
+    <head>
+<?php include('head.php') ?>
     <style>
         .error{
             display: none;
         }
     </style>
-</head>
+    </head>
 
 <body>
-    <?php include('header1.php'); ?>
+<?php if (isset($_GET['mensaje'])) {
+	switch($_GET['mensaje']) {
+		case 1:
+			$mensaje = "Error en el sistema, intente más tarde.";
+			break;
+		case 2:
+			$mensaje = "No existe una cuenta con ese correo.";
+			break;
+		case 3:
+			$mensaje = "El correo está vinculado a una red social. Intenta iniciar sesión con Facebook/Google.";
+			break;
+		case 4:
+			$mensaje = "La contraseña es incorrecta.";
+			break;
+	}
+}
+?>
+<?php if (!isset($_SESSION['UID'])) { ?>
+    <?php include('header.php'); ?>
     <main class="container">
         <div class="row mt-4 mb-4 align-items-center" style="height: 658px;">
+<?php if (isset($mensaje)) { ?>
+							<div id="mensaje" style="display: inline-block; width: 100%; background-color:<?php if ($_GET['mensaje']==3) { echo ' skyblue'; } else { echo ' darkred'; } ?>; color: white;">
+								<br>
+								<center><h6 id="mensajeString"><?php echo $mensaje; ?></h6></center>
+								<br>
+							</div>
+                    <?php } else { ?>
+							<div id="mensaje" style="display: none; width: 100%; background-color: darkgreen; color: white;">
+								<br>
+								<center><h6 id="mensajeString"></h6></center>
+								<br>
+							</div>
+<?php } ?>
             <div class="col-12 col-lg-6 align-items-center justify-content-center pb-3">
                 <div style="display: flex;flex-direction: column; margin: auto auto;">
                     <h2 style="display: block;text-align: center;">Iniciar sesión</h2>
                     <p style="display: block;text-align: center;">Bienvenido de regreso</p>
-                    <form action="index.php" id="formSesion" name="formSesion" method="POST">
+                    <form action="logic/ingreso.php" id="formSesion" name="formSesion" method="POST">
                         <div class="form-group row px-4 ">
                             <div class="col-12 mb-3">
                                 <label for="correo">Correo</label>
@@ -48,8 +94,16 @@
                     <div>
                         <p style="display: inline;">Iniciar sesión con</p>
                         <div style="display: inline;">
-                            <button class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</button>
-                            <button class="btn btn-primary"><i class="fab fa-google-plus"></i> Google</button>
+                        <?php 
+                        if(isset($facebook_login_url)){
+                            echo $facebook_login_url;
+                        } 
+                        if(isset($login_button)){
+                            echo $login_button;
+                        }
+                        ?>
+                            <!-- <button class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</button>
+                            <button class="btn btn-primary"><i class="fab fa-google-plus"></i> Google</button> -->
                         </div>
                     </div>
                 </div>
@@ -72,11 +126,28 @@
 
     <?php include('footer.php');?>
 
+
+<?php if(isset($mensaje)) { ?>
+		<script language="javascript" type="text/javascript">
+			window.onload = function() {
+				$('#mensaje').delay(4000).fadeOut('slow')
+			}
+		</script>
+<?php } ?>
+
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
     <script src="js/formularioCuenta.js"></script>
+
+    
+<?php } else { ?>
+							<!--/ Después de que el usuario Inicia Sesión --> 
+							<script type="text/javascript">
+								window.location = "index.php"
+							</script>
+<?php }?>
 </body>
 
 </html>
