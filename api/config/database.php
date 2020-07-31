@@ -11,7 +11,7 @@ class Database{
     //private $db_name = "zibabd";
     //private $username = "root";
     //private $password = "";
-    //public $conn;
+    public $conn;
   
     // get the database connection
     public function getConnection(){
