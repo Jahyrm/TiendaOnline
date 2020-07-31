@@ -1,80 +1,82 @@
 <?php
 session_start();
+include_once("../globalVars.php");
+
 if (isset($_POST['nombre'])) {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $username = $_POST['usuario'];
 	$correo = $_POST['correo'];
-	$contrasena = $_POST['contrasena'];
+    $contrasena = $_POST['contrasena'];
 
-	include("../datos/conexion.php");
+    $result1 = file_get_contents($env."api/user/readByEmail.php?correo=$correo");
+    $response1 = json_decode( $result1 );
 
-	if (!$coneccion) {
+    if( $http_response_header[0]!="HTTP/1.1 404 Not Found" ){
+        if ($response1->fb_uuid!="" || $response1->google_uuid!="") {
+            header("Location: ../registro.php?mensaje=2");
+        } else {
+            header("Location: ../registro.php?mensaje=3");
+        }
+    } else{
+        include 'funciones.php';
+        $encrypted = dec_enc('encrypt', $contrasena);
 
-		header("Location: ../registro.php?mensaje=1"); //Error en el sistema, intente más tarde.
+        // Create JSON
+        $data = array(
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'usuario' => $username,
+            'correo' => $correo,
+            'contrasena' => $encrypted
+        );
 
-	} else {
+        // Send User JSON object
+        $options = array(
+            'http' => array(
+              'method'  => 'POST',
+              'content' => json_encode( $data ),
+              'header'=>  "Content-Type: application/json\r\n" .
+                          "Accept: application/json\r\n"
+              )
+        );
+        $context  = stream_context_create( $options );
+        $result2 = file_get_contents($env."api/user/create.php", false, $context);
+        $response2 = json_decode( $result2 );
+        
+        // Chequear que se creó y obtener datos.
+        if($http_response_header[0]=="HTTP/1.1 201 Created") {
 
-		$comprobacion = mysqli_query($coneccion, "select * from users where email='$correo'");
-		$comprobacion = mysqli_num_rows($comprobacion);
+            $result3 = file_get_contents($env."api/user/readByEmail.php?correo=$correo", true);
+            $response3 = json_decode( $result3 );
 
-		if (!empty($comprobacion)) {
-
-			$check = mysqli_query($coneccion, "select fb_uuid, google_uuid from users where email='$correo'");
-			$row = mysqli_fetch_array($check);
-			if (isset($row['fb_uuid']) || isset($row['google_uuid'])) {
-				header("Location: ../registro.php?mensaje=2");
-			} else {
-				header("Location: ../registro.php?mensaje=3");
-			}
-
-		} else {
-
-            include 'funciones.php';
-		
-		    $encrypted = dec_enc('encrypt', $contrasena);
-
-			$query = "INSERT INTO users (name,apellido,username,email,password) VALUES ('$nombre','$apellido','$username','$correo','$encrypted')";
-            mysqli_query($coneccion, $query);
-            
-            // Prueba
-            $comp = mysqli_query($coneccion, "select * from users where email='$correo'");
-            $rows = mysqli_fetch_array($comp);
-
-            echo $rows['id'];
-
-            $desencrypted = dec_enc('decrypt', $rows['password']);
-				
-				if ($desencrypted===$contrasena) {
-					$_SESSION['UID'] = $rows['id'];
-					$_SESSION[ 'Nombre' ] = $rows['name'];
-					$_SESSION[ 'Apellido' ] = $rows['apellido'];
-					$_SESSION['Username'] = $rows['username'];
-					$_SESSION[ 'Correo' ] = $rows['email'];
-					$_SESSION[ 'Imagen' ] = $rows['image'];
-					$_SESSION[ 'FUID' ] = $rows['fb_uuid'];
-					$_SESSION[ 'Google' ] = $rows['google_uuid'];
-					$_SESSION[ 'Recuperado' ] = true;
-					/*
+            if( $http_response_header[0]!="HTTP/1.1 404 Not Found" ){
+                    $_SESSION['UID'] = $response3->id;
+					$_SESSION['Tipo'] = $response3->user_type;
+					$_SESSION[ 'Nombre' ] = $response3->name;
+					$_SESSION[ 'Apellido' ] = $response3->apellido;
+					$_SESSION['Username'] = $response3->username;
+					$_SESSION['Telefono'] = $response3->telefono;
+					$_SESSION['FechaNac'] = $response3->fecha_nac;
+					$_SESSION[ 'Correo' ] = $response3->email;
+					$_SESSION[ 'Imagen' ] = $response3->image;
+					$_SESSION[ 'FUID' ] = $response3->fb_uuid;
+					$_SESSION[ 'Google' ] = $response3->google_uuid;
+                    $_SESSION[ 'Recuperado' ] = true;
+                    /*
 					if (isset($recordarme)) {
 						$encrypted = dec_enc('encrypt', $_SESSION['UID']);
 						setcookie('logincookie', $encrypted, time() + (86400 * 365), '/');
 					}
-					*/
+                    */
 					header('Location: ../index.php');
                     return;
-                }
-            
-			//header("Location: ../registro.php?mensaje=4");
+            }
 
-		}
-
-	}
-    mysqli_close($coneccion);
-    
-
-
-
+        } else{
+            header("Location: ../registro.php?mensaje=1");
+        }
+     }
 } else {
 	header("Location: ../registro.php");
 }

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include "globalVars.php";
 
 if(isset($_COOKIE['logincookie'])) {
 	if (!isset($_SESSION['Recuperado'])) {
@@ -9,7 +10,9 @@ if(isset($_COOKIE['logincookie'])) {
 	}
 }
 
-$titulo = "Registrarse";
+$titulo = "Registrarse | Zibá ¡es como tú!";
+
+if (!isset($_SESSION['UID'])) {
 
 require_once 'fb/config.php';
 require_once 'google/config.php';
@@ -68,13 +71,13 @@ require_once 'google/config.php';
                     <form action="logic/registro.php" method="POST">
                         <div class="form-group row px-4 mb-2">
                             <div class="col-12 col-md-6">
-                                <label for="nombre">Nombre</label>
+                                <label for="nombre">Nombres</label>
                                 <input type="text" class="form-control" placeholder="Ingresa tus nombre" name="nombre" id="nombre" required>
                                 <div class="valid-feedback">Válido</div>
                                 <div class="invalid-feedback">Complete el campo</div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <label for="apellido">Apellido</label>
+                                <label for="apellido">Apellidos</label>
                                 <input type="text" class="form-control" placeholder="Ingresa tus apellidos" name="apellido" id="apellido" required>
                                 <div class="valid-feedback">Válido</div>
                                 <div class="invalid-feedback">Complete el campo</div>
@@ -184,12 +187,12 @@ require_once 'google/config.php';
 			}
 		</script>
 <?php } ?>
-
-    <script src="validar-registro.php"></script>
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+<?php
+} else {
+    header("Location: index.php");
+}
+?>

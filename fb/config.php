@@ -7,7 +7,6 @@ if(!session_id()){
 if (isset($_SESSION['UID'])) {
     header("location: ../index.php");
 } else {
-
     require_once 'vendor/autoload.php';
     require 'functions.php';
 
@@ -39,7 +38,7 @@ if (isset($_SESSION['UID'])) {
 
         if(!empty($facebook_user_info['id'])){
             $_SESSION[ 'FUID' ] = $facebook_user_info['id'];
-            $_SESSION['Imagen'] = 'http://graph.facebook.com/'.$facebook_user_info['id'].'/picture';
+            $_SESSION['Imagen'] = 'http://graph.facebook.com/'.$facebook_user_info['id'].'/picture?width=500&height=500';
         }
 
         if(!empty($facebook_user_info['first_name'])){
@@ -54,14 +53,12 @@ if (isset($_SESSION['UID'])) {
             $_SESSION['Correo'] = $facebook_user_info['email'];
         }
 
-        checkuser( $facebook_user_info['id'], $_SESSION['Imagen'], $facebook_user_info['first_name'], $facebook_user_info['last_name'], $facebook_user_info['email']);
+        checkuser(true, $facebook_user_info['id'], $_SESSION['Imagen'], $facebook_user_info['first_name'], $facebook_user_info['last_name'], $facebook_user_info['email']);
 		header("Location: ../index.php");
-
-
 
     } else {
         $facebook_permissions = ['email'];
-        $facebook_login_url = $facebook_helper->getLoginUrl('https://zibareal.herokuapp.com/fb/config.php', $facebook_permissions);
+        $facebook_login_url = $facebook_helper->getLoginUrl($env.'fb/config.php', $facebook_permissions);
         $facebook_login_url = '<a style="display: inline;" href="'.$facebook_login_url.'"><button class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</button></a>';
     }
 }

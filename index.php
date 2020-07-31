@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include "globalVars.php";
 
 if(isset($_COOKIE['logincookie'])) {
 	if (!isset($_SESSION['Recuperado'])) {
@@ -10,7 +11,6 @@ if(isset($_COOKIE['logincookie'])) {
 }
 
 $titulo = "Zibá ¡es como tú!";
-include("datos/conexion.php");
 ?>
 
 
@@ -85,8 +85,8 @@ include("datos/conexion.php");
         </div>
 
         <div class="row py-4">
-        <?php $lista = json_decode( file_get_contents('https://zibareal.herokuapp.com/api/product/read.php'), true );?>
-        <?php foreach ($lista["records"] as $product){ ?>
+        <?php $products = json_decode( file_get_contents($env.'api/product/read.php'), true );?>
+        <?php foreach ($products["records"] as $product){ ?>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card mx-auto">
                     <img class="card-img-top" src=<?php echo $product['image'];?> alt="" style="height: 250px;">
@@ -95,8 +95,8 @@ include("datos/conexion.php");
                         <h5 class="card-title">Precio $<?php echo $product['price'];?></h5>
                         <p class="card-text"><?php echo $product['description'];?></p>
                         <button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button>
-                        <button class="btn btn-dark" style="width: 100%;" data-toggle="modal" data-target="#producto<?php echo $product['id_producto'];?>">Detalles del producto</button>
-                        <div class="modal fade" id="producto<?php echo $product['id'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $product['id_producto'];?>" aria-hidden="true">
+                        <a href="producto/index.php?id=<?php echo $product['id']; ?>"><button class="btn btn-dark" style="width: 100%;" data-toggle="modal" data-target="#producto<?php echo $product['id'];?>">Detalles del producto</button></a>
+                        <div class="modal fade" id="producto<?php echo $product['id'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $product['id'];?>" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -130,12 +130,6 @@ include("datos/conexion.php");
     </main>
 
     <?php include('footer.php');?>
-   
-
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

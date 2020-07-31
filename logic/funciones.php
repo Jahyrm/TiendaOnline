@@ -23,19 +23,20 @@ function dec_enc($action, $string) {
     return $output;
 }
 
-function recuperarUser($id) {
-	include("../datos/conexion.php");
-	$query = mysqli_query($coneccion, "select * from users where UID='$id'");
-    $row = mysqli_fetch_array($query);
-    $_SESSION['UID'] = $row['id'];
-    $_SESSION[ 'Nombre' ] = $row['name'];
-    $_SESSION[ 'Apellido' ] = $row['apellido'];
-    $_SESSION['Username'] = $row['username'];
-    $_SESSION[ 'Correo' ] = $row['email'];
-    $_SESSION[ 'FUID' ] = $row['fb_uuid'];
-    $_SESSION[ 'Google' ] = $row['google_uuid'];
-	$_SESSION[ 'Recuperado' ] = true;
-	mysqli_free_result($query);
-	mysqli_close($coneccion);
+function recuperarUser($id){
+    $result = file_get_contents($env."api/user/readById.php?id=$id");
+    $response = json_decode( $result );
+    $_SESSION['UID'] = $response->id;
+    $_SESSION['Tipo'] = $response->user_type;
+    $_SESSION[ 'Nombre' ] = $response->name;
+    $_SESSION[ 'Apellido' ] = $response->apellido;
+    $_SESSION['Username'] = $response->username;
+    $_SESSION['Telefono'] = $response->telefono;
+    $_SESSION['FechaNac'] = $response->fecha_nac;
+    $_SESSION[ 'Correo' ] = $response->email;
+    $_SESSION[ 'Imagen' ] = $response->image;
+    $_SESSION[ 'FUID' ] = $response->fb_uuid;
+    $_SESSION[ 'Google' ] = $response->google_uuid;
+    $_SESSION[ 'Recuperado' ] = true;
 }
 ?>

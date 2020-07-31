@@ -26,7 +26,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <h4>Empresa</h4>
                     <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="acercaNosotros.php">Acerca de nosotros</a>
+                        <a style="text-align: left;" href="<?php if (isset($prof)) { echo $prof; } ?>acercaNosotros.php">Acerca de nosotros</a>
                         <a style="text-align: left;" href="contacto.php">Contactos</a>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <h4>Información</h4>
                     <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="envios.php">Envíos y devoluciones</a>
-                        <a style="text-align: left;" href="formasPago.php">Formas de pago</a>
-                        <a style="text-align: left;" href="index.php">Promociones vigentes</a>
+                        <a style="text-align: left;" href="<?php if (isset($prof)) { echo $prof; } ?>envios.php">Envíos y devoluciones</a>
+                        <a style="text-align: left;" href="<?php if (isset($prof)) { echo $prof; } ?>formasPago.php">Formas de pago</a>
+                        <a style="text-align: left;" href="<?php if (isset($prof)) { echo $prof; } ?>index.php">Promociones vigentes</a>
 
                     </div>
                 </div>
@@ -44,8 +44,8 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <h4>Legal</h4>
                     <div style="display: flex; flex-direction: column;">
-                        <a style="text-align: left;" href="terminosYcondiciones.php">Términos y condiciones</a>
-                        <a style="text-align: left;" href="politicaPrivacidad.php">Política de privacidad</a>
+                        <a style="text-align: left;" href="<?php if (isset($prof)) { echo $prof; } ?>terminosYcondiciones.php">Términos y condiciones</a>
+                        <a style="text-align: left;" href="<?php if (isset($prof)) { echo $prof; } ?>politicaPrivacidad.php">Política de privacidad</a>
                     </div>
                 </div>
                 <hr>
@@ -61,3 +61,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="<?php if (isset($prof)) { echo $prof; } ?>js/jquery-3.5.1.min.js"></script>
+    <script src="<?php if (isset($prof)) { echo $prof; } ?>js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>

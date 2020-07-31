@@ -53,3 +53,101 @@ h4 {
 .footer-container {
     background-color:black;
 }
+
+.perfil {
+    width: 250px;
+    height: 250px;
+}
+
+.product_title {
+    padding: 0;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 30px;
+    clear: none;
+    margin-bottom: 10px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.price {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #54d15e;
+}
+
+.pdesc {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    color: #838383;
+}
+
+.in-stock {
+    color: #43C343;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.out-stock {
+    color: #ff0000;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-height{
+    line-height: 45px;
+}
+
+.cantidad {
+    border: 1px solid #ebebeb;
+    width: 54px;
+    height: 45px;
+    display: inline;
+    padding: 8px;
+    margin: 0 3px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.form-inline .form-group {
+    margin-right:6px;
+}
+
+.product_meta {
+    font-size: 13px;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    clear: both;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.pm_enfasis {
+    color: #000;
+    display: inline-block;
+    margin: 0;
+    font-weight: 500;
+    width: 100%;
+    clear: both;
+}
+
+.pm_desc {
+    margin-left: 5px;
+    font-weight: normal;
+    color: #808080;
+}
+
+.rela {
+    display: inline !important;
+}
+
+.rela:hover {
+    text-decoration: none !important;
+}

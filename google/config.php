@@ -8,7 +8,6 @@ if(!session_id()){
 if (isset($_SESSION['UID'])) {
     header("location: ../index.php");
 } else {
-
 //config.php
 
 //Include Google Client Library for PHP autoload file
@@ -24,7 +23,7 @@ $google_client->setClientId('33520381037-139j0kh55q8dvhgaa1re6451soci3gte.apps.g
 $google_client->setClientSecret('FBDfkr8l-Spj-aPF-UtlEg38');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('https://zibareal.herokuapp.com/google/config.php');
+$google_client->setRedirectUri($env.'google/config.php');
 
 // to get the email and profile 
 $google_client->addScope('email');
@@ -65,7 +64,7 @@ $google_client->addScope('profile');
             $_SESSION['G'] = true;
         }
 
-        checkuser($data['id'],$data['picture'],$data['given_name'],$data['family_name'],$data['email']);
+        checkuser(true, $data['id'],$data['picture'],$data['given_name'],$data['family_name'],$data['email']);
         header("Location: ../index.php");
 
     }

@@ -1,17 +1,25 @@
+<?php 
+session_start();
+
+if(isset($_COOKIE['logincookie'])) {
+	if (!isset($_SESSION['Recuperado'])) {
+		include 'logic/funciones.php';
+		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
+		recuperarUser($id);
+	}
+}
+
+$titulo = "Envíos y devoluciones | Zibá ¡es como tú";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>Envíos y devoluciones</title>
-
+<?php include('head.php') ?>
 </head>
 
 <body>
-<?php include('header1.php'); ?>
+<?php include('header.php'); ?>
 
     <main class="container" style="margin-top: 230px; margin-bottom: 0px;">
         <div class="row" style="margin-top: 100px; margin-bottom: 180px;">
@@ -45,12 +53,6 @@
     </main>
 
     <?php include('footer.php');?>
-
-
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

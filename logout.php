@@ -3,9 +3,12 @@ session_start();
 session_unset();
 
 $_SESSION['UID'] = NULL;
+$_SESSION['Tipo'] = NULL;
 $_SESSION[ 'Nombre' ] = NULL;
 $_SESSION[ 'Apellido' ] = NULL;
 $_SESSION['Username'] = NULL;
+$_SESSION['Telefono'] = NULL;
+$_SESSION['FechaNac'] = NULL;
 $_SESSION[ 'Correo' ] = NULL;
 $_SESSION[ 'Imagen' ] = NULL;
 $_SESSION[ 'FUID' ] = NULL;
@@ -28,5 +31,5 @@ session_destroy();
 unset($_COOKIE['logincookie']);
 $res = setcookie('logincookie', null, -1, '/');
 
-header("Location: miCuenta.php");        // you can enter home page here ( Eg : header("Location: " ."http://www.krizna.com"); 
+header("Location: acceder.php");        // you can enter home page here ( Eg : header("Location: " ."http://www.krizna.com"); 
 ?>

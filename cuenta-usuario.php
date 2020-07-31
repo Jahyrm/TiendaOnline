@@ -1,112 +1,97 @@
-<!DOCTYPE html>
+<?php 
+session_start();
+include "globalVars.php";
 
-<html lang="en">
+if(isset($_COOKIE['logincookie'])) {
+	if (!isset($_SESSION['Recuperado'])) {
+		include 'logic/funciones.php';
+		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
+		recuperarUser($id);
+	}
+}
+
+$titulo = "Mi Cuenta | Zibá ¡es como tú";
+
+if (!isset($_SESSION["UID"])){
+    header('Location: index.php');
+} else {
+?>
+
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="ss/estilos.css">
-    
-    <title>Mi cuenta</title>
+<?php include('head.php') ?>
 </head>
 
 <body class>
-    <?php include('header1.php'); ?>
+    <?php include('header.php'); ?>
+
+
     <main class="container">
 
-        <div class="row d-flex justify-content-around mt-3">
-            <img src="../img/promociones.jpg" class="d-block w-100" alt="dcfvbn">
+        <!-- <div class="row d-flex justify-content-around mt-3">
+            <img src="img/promociones.jpg" class="d-block w-100" alt="dcfvbn">
+        </div>-->
+
+        <div class="col-12 align-items-center justify-content-center pb-3">
+                <h2 style="display: block;text-align: center;">Mi Cuenta</h2>
+                <hr/>
+        </div>
+
+        <div class="col-12 pb-3">
+            <div style="display: flex;flex-direction: column; margin: auto auto;">
+                <h2 style="display: block;">Bienvenido, <?php echo $_SESSION["Nombre"]." ".$_SESSION["Apellido"]; ?></h2>
+            </div>
         </div>
 
         <div class="row d-flex justify-content-around mt-3">
-            <div class="col-12">
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="collapsed card-link text-black-50" data-toggle="collapse" href="#collapseOne">
-                                Tu cuenta
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <h2 class="text-capitalize"><strong>Bienvenido ....</strong></h2>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="card-link text-black-50" data-toggle="collapse" href="#collapseTwo">
-                                Actualiza tu información
-                            </a>
-                        </div>
 
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <form action="">
-                                    <div class="form-group row px-4 mb-2">
-                                        <div class="col-12 col-md-6">
-                                            <label for="nombre">Nombres</label>
-                                            <input type="text" class="form-control" placeholder="Ingresa tus nombre" name="nombre" id="nombre">
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="apellido">Apellidos</label>
-                                            <input type="text" class="form-control" placeholder="Ingresa tus apellidos" name="password" id="password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row px-4 mb-2">
-                                        <div class="col-12 col-md-6">
-                                            <label for="tipoD">Teléfono</label>
-                                            <input type="text" class="form-control" placeholder="Ingresa tu teléfono">
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label for="fecha">Fecha de nacimiento</label>
-                                            <input id="date" class="form-control" type="date">
-                                        </div>
+<?php include("panel/user.php"); ?>
 
-                                    </div>
-                                    <div class="form-group row px-4 mb-2">
-                                        <div class="col-12 col-md-6">
-                                            <label for="perfil">Actualizar foto de perfil</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFileLang" accept=".jpg,.png,.jpeg,.gif" value="">
-                                                    <label class="custom-file-label" for="customFileLang">Escoger archivo</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <input type="submit" class="btn btn-dark btn-block " value="Guardar">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="collapsed card-link text-black-50" data-toggle="collapse" href="#collapseThree">
-                                Lista de productos
-                            </a>
-                        </div>
-                        <div id="collapseThree" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<?php
+if($_SESSION["Tipo"]==1) {
+?>
+        <div class="col-12 align-items-center justify-content-center pb-3">
+                <br/><br/>
+                <h2 style="display: block;text-align: center;">Panel de administración</h2>
+                <hr/>
+        </div>
+<?php
+include("panel/product.php");
+
+include("panel/marca.php");
+
+include("panel/categoria.php");
+
+include("panel/subcategoria.php");
+
+}
+?>
+
+            <br/><br/>
         </div>
     </main>
 
     <?php include('footer.php'); ?>
 
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/5b9c980490.js" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        $('#image').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
+
+        $('#imagep').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
+    </script>
+    <script src="logic/ajax.js"></script>
 </body>
 
 </html>
+<?php
+}
+?>

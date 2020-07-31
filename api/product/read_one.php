@@ -21,34 +21,34 @@ $product = new Product($db);
 $product->id = isset($_GET['id']) ? $_GET['id'] : die();
   
 // read the details of product to be edited
-$product->readOne();
-  
-if($product->name!=null){
-    // create array
-    $product_arr = array(
-        "id" =>  $product->id,
-        "name" => $product->name,
-        "image" => $product->image,
-        "price" => $product->price,
-        "stock" => $product->stock,
-        "description" => html_entity_decode($product->description),
-        "id_marca" => $product->id_marca,
-        //"marca" => $MARCA_NOMBRE,
-        //"id_categoria" => $product->stock,
-        //"categoria" => $CAT_NOMBRE,
-        "id_subcategoria" => $product->id_subcat,
-        //"subcategoria" => $SUBCAT_NOMBRE
-  
+$stmt = $product->readOne();
+$num = $stmt->rowCount();
+
+if($num==1){
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    extract($row);
+    $product_arr=array(
+        "id" => $ID_PRODUCTO,
+        "name" => $NOMBRE,
+        "image" => $IMAGEN,
+        "price" => $PRECIO,
+        "stock" => $STOCK,
+        "description" => html_entity_decode($DESCRIPCION),
+        "id_marca" => $ID_MARCA,
+        "marca" => $MARCA_NOMBRE,
+        "id_categoria" => $ID_CATEGORIA,
+        "categoria" => $CAT_NOMBRE,
+        "id_subcategoria" => $ID_SUBCAT,
+        "subcategoria" => $SUBCAT_NOMBRE
     );
-  
     // set response code - 200 OK
     http_response_code(200);
   
     // make it json format
     echo json_encode($product_arr);
-}
-  
-else{
+
+} else{
     // set response code - 404 Not found
     http_response_code(404);
   

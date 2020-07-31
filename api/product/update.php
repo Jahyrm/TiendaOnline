@@ -31,7 +31,7 @@ $product->stock = $data->stock;
 $product->description = $data->description;
 $product->id_marca = $data->idmarca;
 $product->id_subcat = $data->idsubcat;
-  
+
 // update the product
 if($product->update()){
   

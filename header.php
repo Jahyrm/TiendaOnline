@@ -1,19 +1,20 @@
 <header class="fixed-top">
         <div class="heade">
             <div class="logo">
-                <img src="Logo.jpeg" alt="" style="height: 60px;">
+                <img src="<?php if (isset($prof)) { echo $prof; } ?>Logo.jpeg" alt="" style="height: 60px;">
             </div>
             <div class="cuenta">
 
                 <?php 
                 if (isset($_SESSION['UID'])) { ?>
-                    <a href="logout.php">Cerrar sesión</a>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>cuenta-usuario.php">Mi Cuenta</a>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>logout.php">Cerrar sesión</a>
                 <?php } else { ?>
-                    <a href="miCuenta.php">Mi cuenta</a>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>acceder.php">Acceder/Registrarse</a>
                 <?php }
                 ?>
                 
-                <a href="">Carrito de compras (0) </a>
+                <a href="<?php if (isset($prof)) { echo $prof; } ?>carrito.php">Carrito de compras (0) </a>
             </div>
         </div>
         
@@ -34,8 +35,8 @@
                                                 Marcas
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="#navbarDropdown">
-                                            <?php $lista = json_decode( file_get_contents('https://zibareal.herokuapp.com/api/marca/read.php'), true );?>
-                                            <?php foreach ($lista["records"] as $marca){ ?>
+                                            <?php $marcas = json_decode( file_get_contents($env.'api/marca/read.php'), true );?>
+                                            <?php foreach ($marcas["records"] as $marca){ ?>
                                                 <a href="#" class="dropdown-item"><?php echo $marca['name'];?></a>
                                             <?php } ?>
                                             </div>

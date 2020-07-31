@@ -1,59 +1,49 @@
 <?php
 session_start();
+include_once("../globalVars.php");
+
 if (isset($_POST['correo'])) {
 	$correo = $_POST['correo'];
 	$contrasena = $_POST['password'];
-	//$recordarme = $_POST['recordarme'];
+    $recordarme = $_POST['recordarme'];
 
-	include("../datos/conexion.php");
+    $result = file_get_contents($env."api/user/readByEmail.php?correo=$correo");
+    $response = json_decode( $result );
 
-	if (!$coneccion) {
-		header("Location: ../miCuenta.php?mensaje=1");
-	} else {
-		$comprobacion = mysqli_query($coneccion, "select * from users where email='$correo'");
-		$comprobacionDos = mysqli_num_rows($comprobacion);
-
-		if (empty($comprobacionDos)) {
-
-			header("Location: ../miCuenta.php?mensaje=2");
-
-		} else {
-
-			$row = mysqli_fetch_array($comprobacion);
-			if ($row['password']==NULL && ($row['fb_uuid']!=NULL || $row['google_uuid']!=NULL) ) {
-				header("Location: ../miCuenta.php?mensaje=3"); //correo vinculado a red social
-			} else {
-				include 'funciones.php';
-				$desencrypted = dec_enc('decrypt', $row['password']);
-				
-				if ($desencrypted===$contrasena) {
-					$_SESSION['UID'] = $row['id'];
-					$_SESSION[ 'Nombre' ] = $row['name'];
-					$_SESSION[ 'Apellido' ] = $row['apellido'];
-					$_SESSION['Username'] = $row['username'];
-					$_SESSION[ 'Correo' ] = $row['email'];
-					$_SESSION[ 'Imagen' ] = $row['image'];
-					$_SESSION[ 'FUID' ] = $row['fb_uuid'];
-					$_SESSION[ 'Google' ] = $row['google_uuid'];
-					$_SESSION[ 'Recuperado' ] = true;
-					/*
-					if (isset($recordarme)) {
-						$encrypted = dec_enc('encrypt', $_SESSION['UID']);
-						setcookie('logincookie', $encrypted, time() + (86400 * 365), '/');
-					}
-					*/
-					header('Location: ../index.php');
-					return;
-				} else {
-					header("Location: ../miCuenta.php?mensaje=4");
-				}
-			}
-
-		}
-
-	}
-	mysqli_close($coneccion);
+    if( $http_response_header[0]=="HTTP/1.1 404 Not Found" ){
+        header("Location: ../acceder.php?mensaje=2");
+    } else {
+        if ($response->password==NULL && ($response->fb_uuid!=NULL || $response->google_uuid!=NULL) ) {
+            header("Location: ../acceder.php?mensaje=3"); //correo vinculado a red social
+        } else {
+            include 'funciones.php';
+            $desencrypted = dec_enc('decrypt', $response->password);
+            
+            if ($desencrypted===$contrasena) {
+                $_SESSION['UID'] = $response->id;
+                $_SESSION['Tipo'] = $response->user_type;
+                $_SESSION[ 'Nombre' ] = $response->name;
+                $_SESSION[ 'Apellido' ] = $response->apellido;
+                $_SESSION['Username'] = $response->username;
+                $_SESSION['Telefono'] = $response->telefono;
+                $_SESSION['FechaNac'] = $response->fecha_nac;
+                $_SESSION[ 'Correo' ] = $response->email;
+                $_SESSION[ 'Imagen' ] = $response->image;
+                $_SESSION[ 'FUID' ] = $response->fb_uuid;
+                $_SESSION[ 'Google' ] = $response->google_uuid;
+                $_SESSION[ 'Recuperado' ] = true;
+                if (isset($recordarme)) {
+                    $encrypted = dec_enc('encrypt', $_SESSION['UID']);
+                    setcookie('logincookie', $encrypted, time() + (86400 * 365), '/');
+                }
+                header('Location: ../index.php');
+				return;
+            } else {
+                header("Location: ../acceder.php?mensaje=4");
+            }
+        }
+    }
 } else {
-	header("Location: ../miCuenta.php");
+    header("Location: ../acceder.php");
 }
 ?>

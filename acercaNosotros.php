@@ -1,18 +1,26 @@
+<?php 
+session_start();
+
+if(isset($_COOKIE['logincookie'])) {
+	if (!isset($_SESSION['Recuperado'])) {
+		include 'logic/funciones.php';
+		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
+		recuperarUser($id);
+	}
+}
+
+$titulo = "Acerca de Nosotros | Zibá ¡es como tú";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>Acerca de nosotros</title>
-
+<?php include('head.php') ?>
 </head>
 
 <body>
     
-<?php include('header1.php'); ?>
+<?php include('header.php'); ?>
     <main class="container">
         <div class="row mt-5" style="height: 200px;">
             <div class="col-12">
