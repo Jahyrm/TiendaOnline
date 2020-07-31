@@ -23,7 +23,7 @@ $google_client->setClientId('33520381037-139j0kh55q8dvhgaa1re6451soci3gte.apps.g
 $google_client->setClientSecret('FBDfkr8l-Spj-aPF-UtlEg38');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri($env.'google/config.php');
+$google_client->setRedirectUri('https://zibareal.herokuapp.com/google/config.php');
 
 // to get the email and profile 
 $google_client->addScope('email');

@@ -58,7 +58,7 @@ if (isset($_SESSION['UID'])) {
 
     } else {
         $facebook_permissions = ['email'];
-        $facebook_login_url = $facebook_helper->getLoginUrl($env.'fb/config.php', $facebook_permissions);
+        $facebook_login_url = $facebook_helper->getLoginUrl('https://zibareal.herokuapp.com/fb/config.php', $facebook_permissions);
         $facebook_login_url = '<a style="display: inline;" href="'.$facebook_login_url.'"><button class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</button></a>';
     }
 }
