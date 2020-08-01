@@ -51,7 +51,7 @@ $("#buttonB").click(function(e) {
 
     var prodId = $( "#prodid" ).val();
 
-    var string = "http://localhost/TiendaOnline/api/product/read_one.php?id="+prodId;
+    var string = "api/product/read_one.php?id="+prodId;
 
     if(prodId!=0) {
         $.ajax({

@@ -207,7 +207,7 @@ foreach ($subcategorias["records"] as $subcategoria) { ?>
                                     <div class="row">
                                         <div class="col">
                                             <h5>Imagen Acutual</h5>
-                                            <img id="imageprod" style="width: 250px; height: 250px;"/>
+                                            <img id="imageprod" src="" style="width: 250px; height: 250px;"/>
                                         </div>
                                     </div>
 
