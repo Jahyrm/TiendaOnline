@@ -15,12 +15,18 @@ $_SESSION[ 'FUID' ] = NULL;
 $_SESSION[ 'Google' ] = NULL;
 $_SESSION[ 'Recuperado' ] = NULL;
 
+if(isset($_SESSION['G'])) {
+    $_SESSION[ 'G' ] = NULL;
+}
+
+/*
 include('google/config.php');
 
 //Reset OAuth access token
 if(isset($_SESSION['G'])) {
     $google_client->revokeToken();
 }
+*/
 
 $_SESSION[ 'G' ] = NULL;
 
