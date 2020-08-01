@@ -8,7 +8,7 @@ if (isset($_SESSION['UID'])) {
     header("location: ../index.php");
 } else {
     require __DIR__."/../globalVars.php";
-    require_once __DIR__ . 'vendor/autoload.php';
+    require_once __DIR__ . '/vendor/autoload.php';
     require 'functions.php';
 
     $facebook = new \Facebook\Facebook([
