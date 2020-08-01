@@ -7,7 +7,7 @@ if(!session_id()){
 if (isset($_SESSION['UID'])) {
     header("location: ../index.php");
 } else {
-    include "../globalVars.php";
+    require __DIR__."/../globalVars.php";
     require_once 'vendor/autoload.php';
     require 'functions.php';
 

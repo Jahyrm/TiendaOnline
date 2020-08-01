@@ -9,7 +9,8 @@ if (isset($_SESSION['UID'])) {
     header("location: ../index.php");
 } else {
 //config.php
-include "../globalVars.php";
+require __DIR__."/../globalVars.php";
+
 //Include Google Client Library for PHP autoload file
 require_once __DIR__ . '/vendor/autoload.php';
 
