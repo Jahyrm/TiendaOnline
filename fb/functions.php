@@ -1,12 +1,11 @@
 <?php
 
 function checkuser($update,$fuid,$fimage,$ffname,$flast_name,$femail){
-
+	include "../globalVars.php";
 	$result = file_get_contents($env."api/user/readBySocial.php?correo=$femail&red=fb&uuid=$fuid");
 	$response = json_decode( $result );
 	
 	if( $http_response_header[0]=="HTTP/1.1 404 Not Found" ){
-		
        // Create JSON
 		$data = array(
 			'nombre' => $ffname,

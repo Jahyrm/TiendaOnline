@@ -1,7 +1,7 @@
 <?php
 
 function checkuser($update,$fuid,$fimage,$ffname,$flast_name,$femail){
-
+	include "../globalVars.php";
 	$result = file_get_contents($env."api/user/readBySocial.php?correo=$femail&red=google&uuid=$fuid");
 	$response = json_decode( $result );
 	
