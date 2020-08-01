@@ -83,7 +83,7 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="image" name="image" accept=".jpg,.png,.jpeg,.gif">
-                                                    <label class="custom-file-label" for="image">Escoger archivo</label>
+                                                    <label id="img0" class="custom-file-label" for="image">Escoger archivo</label>
                                                 </div>
                                             </div>
                                         </div>

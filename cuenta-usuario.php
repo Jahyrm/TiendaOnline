@@ -80,12 +80,17 @@ include("panel/subcategoria.php");
     <script type="application/javascript">
         $('#image').change(function(e){
             var fileName = e.target.files[0].name;
-            $('.custom-file-label').html(fileName);
+            $('#img0').html(fileName);
         });
 
         $('#imagep').change(function(e){
             var fileName = e.target.files[0].name;
-            $('.custom-file-label').html(fileName);
+            $('#img1').html(fileName);
+        });
+
+        $('#eimagep').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('#img2').html(fileName);
         });
     </script>
     <script src="logic/ajax.js"></script>
