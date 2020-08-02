@@ -28,13 +28,13 @@ if (isset($_GET['id'])) {
         if ($http_response_header[0]=="HTTP/1.1 200 OK") {
             header("Location: ../../carrito.php");
         } else {
-            header("Location: ../../carrito.php?m=2");
+            header("Location: ../../carrito.php?m=4");
         }
 
     } else {
-        header("Location: ../../carrito.php?m=3");
+        header("Location: ../../carrito.php?m=5");
     }
 } else {
-    header("Location: ../../carrito.php?m=4");
+    header("Location: ../../carrito.php?m=6");
 }
 ?>

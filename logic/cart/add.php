@@ -2,6 +2,34 @@
 session_start();
 include "../../globalVars.php";
 
+
+if (strpos($_SERVER['HTTP_REFERER'], '?') !== false) {
+    $tieneId = false;
+    $porid = 0;
+    $porciones = explode("?", $_SERVER['HTTP_REFERER']);
+    foreach($porciones as $porcion) {
+        if (strpos($porcion, 'id=') !== false) {
+            $tieneId= true;
+            $porcionesDos = explode("&", $porcion);
+            foreach($porcionesDos as $porcionDos) {
+                if (strpos($porcionDos, 'id=') !== false) {
+                    $porid = $porcionDos;
+                }
+            }
+            break;
+        }
+    }
+    if($tieneId) {
+        $url = strtok($_SERVER['HTTP_REFERER'], '?')."?".$porid;
+    } else {
+        $url = strtok($_SERVER['HTTP_REFERER'], '?');
+    }
+} else {
+    $tieneId = false;
+    $url = $_SERVER['HTTP_REFERER'];
+}
+
+
 if (isset($_GET['id'])) {
     if (isset($_SESSION['UID'])) {
         $userid = $_SESSION['UID'];
@@ -35,7 +63,7 @@ if (isset($_GET['id'])) {
 
             if ($already) {
                 if($cant>$stock) {
-                    header("Location: ../../index.php?m=0");
+                    if($tieneId) { header("Location: " . $url."&m=0&s=".$stock."&a=".$inCart); } else { header("Location: " . $url."?m=0&s=".$stock."&a=".$inCart); }
                     die();
                 }
             }
@@ -64,13 +92,19 @@ if (isset($_GET['id'])) {
             $response = json_decode( $result );
         
             if ($http_response_header[0]=="HTTP/1.1 200 OK" || $http_response_header[0]=="HTTP/1.1 201 Created") {
-                header("Location: ../../index.php?m=1");
+                header("Location: " . $url);
             } else {
-                header("Location: ../../index.php?m=2");
+                if($tieneId) { header("Location: " . $url."&m=1"); } else { header("Location: " . $url."?m=1"); }
             }
 
         } else {
 
+            $product = json_decode( file_get_contents($env.'api/product/read_one.php?id='.$prodid), true );
+
+            if($cant>$product["stock"]) {
+                header("Location: " . $url."?m=0&s=".$product["stock"]);
+                die();
+            }
             // Si no hay productos, ingreso
             $data = array(
                 'user' => $userid,
@@ -92,15 +126,15 @@ if (isset($_GET['id'])) {
             $response = json_decode( $result );
         
             if ($http_response_header[0]=="HTTP/1.1 201 Created") {
-                header("Location: ../../index.php?m=1");
+                header("Location: " . $url);
             } else {
-                header("Location: ../../index.php?m=2");
+                if($tieneId) { header("Location: " . $url."&m=1"); } else { header("Location: " . $url."?m=1"); }
             }
         }
     } else {
-        header("Location: ../../index.php?m=3");
+        if($tieneId) { header("Location: " . $url."&m=2"); } else { header("Location: " . $url."?m=2"); }
     }
 } else {
-    header("Location: ../../index.php?m=4");
+    if($tieneId) { header("Location: " . $url."&m=3"); } else { header("Location: " . $url."?m=3"); }
 }
 ?>

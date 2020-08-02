@@ -72,11 +72,11 @@ if (isset($_POST['id'])) {
         $_SESSION['FechaNac'] = $fecha_nac;
         $_SESSION['Imagen'] = $image;
         
-        header("Location: ../../cuenta-usuario.php?m=1");
+        header("Location: ../../cuenta-usuario.php?m=42");
     } else {
-        header("Location: ../../cuenta-usuario.php?m=2");
+        header("Location: ../../cuenta-usuario.php?m=43");
     }
 } else {
-    header("Location: ../../cuenta-usuario.php");
+    header("Location: ../../cuenta-usuario.php?m=44");
 }
 ?>

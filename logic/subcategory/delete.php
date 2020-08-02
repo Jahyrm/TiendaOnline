@@ -23,12 +23,12 @@ if (isset($_POST['scatidel'])) {
     $response = json_decode( $result );
 
     if ($http_response_header[0]=="HTTP/1.1 200 OK") {
-        header("Location: ../../cuenta-usuario.php?m=1");
+        header("Location: ../../cuenta-usuario.php?m=36");
     } else {
-        header("Location: ../../cuenta-usuario.php?m=2");
+        header("Location: ../../cuenta-usuario.php?m=37");
     }
 
 } else {
-    header("Location: ../../cuenta-usuario.php?m=3");
+    header("Location: ../../cuenta-usuario.php?m=38");
 }
 ?>

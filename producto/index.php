@@ -18,7 +18,8 @@ if (isset($_GET['id'])) {
         }
 
         $titulo = $product["name"]." | Zibá ¡es como tú!";
-        $prof = "../"
+        $prof = "../";
+        include('mensajes.php');
 ?>
 <!DOCTYPE html>
     <html lang="es">
@@ -28,8 +29,27 @@ if (isset($_GET['id'])) {
         </head>
         <body>
 <?php include('../header.php'); ?>
-<br/>
-            <main class="container">
+    <main class="container">
+
+        <div class="row" >
+            <div class="col" id="mensaje">
+<?php if (isset($mensaje)) { ?>
+				<div  style="display: inline-block; width: 100%; background-color:<?php if ($_GET['m']==0 || $_GET['m']==2 || $_GET['m']==5) { echo ' skyblue'; } else { echo ' darkred'; } ?>; color: white;">
+					<br>
+					<center><h6 id="mensajeString"><?php echo $mensaje; ?></h6></center>
+					<br>
+				</div>
+<?php } else { ?>
+				<div style="display: none; width: 100%; background-color: darkgreen; color: white;">
+						<br>
+					    <center><h6 id="mensajeString"></h6></center>
+						<br>
+                </div>
+<?php } ?>
+                <br/><br/>
+            </div>
+        </div>
+
                 <div class="row">
                     <div class="col">
                         <div class="row">
@@ -103,6 +123,13 @@ foreach ($relacionados["records"] as $relacionado){
             <br/><br/>
 
 <?php include('../footer.php'); ?>
+<?php if(isset($mensaje)) { ?>
+		<script language="javascript" type="text/javascript">
+			window.onload = function() {
+				$('#mensaje').delay(4000).fadeOut('slow')
+			}
+		</script>
+<?php } ?>
         </body>
     </html>
 <?php

@@ -23,12 +23,12 @@ if (isset($_POST['mname'])) {
     $response = json_decode( $result );
 
     if ($http_response_header[0]=="HTTP/1.1 201 Created") {
-        header("Location: ../../cuenta-usuario.php?m=1");
+        header("Location: ../../cuenta-usuario.php?m=10");
     } else {
-        header("Location: ../../cuenta-usuario.php?m=2");
+        header("Location: ../../cuenta-usuario.php?m=11");
     }
 
 } else {
-    header("Location: ../../cuenta-usuario.php?m=3");
+    header("Location: ../../cuenta-usuario.php?m=12");
 }
 ?>

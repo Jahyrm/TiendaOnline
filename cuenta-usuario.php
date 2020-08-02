@@ -15,6 +15,7 @@ $titulo = "Mi Cuenta | Zibá ¡es como tú";
 if (!isset($_SESSION["UID"])){
     header('Location: index.php');
 } else {
+    include 'mensajes2.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +30,27 @@ if (!isset($_SESSION["UID"])){
 
 
     <main class="container">
+
+
+        <div class="row" >
+            <div class="col" id="mensaje">
+<?php if (isset($mensaje)) { ?>
+				<div  style="display: inline-block; width: 100%; background-color:<?php if ($colorError) { echo ' darkred'; } else { echo ' skyblue'; } ?>; color: white;">
+					<br>
+					<center><h6 id="mensajeString"><?php echo $mensaje; ?></h6></center>
+					<br>
+				</div>
+<?php } else { ?>
+				<div style="display: none; width: 100%; background-color: darkgreen; color: white;">
+						<br>
+					    <center><h6 id="mensajeString"></h6></center>
+						<br>
+                </div>
+<?php } ?>
+                <br/><br/>
+            </div>
+        </div>
+
 
         <!-- <div class="row d-flex justify-content-around mt-3">
             <img src="img/promociones.jpg" class="d-block w-100" alt="dcfvbn">
@@ -76,6 +98,14 @@ include("panel/subcategoria.php");
     </main>
 
     <?php include('footer.php'); ?>
+
+<?php if(isset($mensaje)) { ?>
+		<script language="javascript" type="text/javascript">
+			window.onload = function() {
+				$('#mensaje').delay(4000).fadeOut('slow')
+			}
+		</script>
+<?php } ?>
 
     <script type="application/javascript">
         $('#image').change(function(e){

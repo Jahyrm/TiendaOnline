@@ -11,6 +11,7 @@ if(isset($_COOKIE['logincookie'])) {
 }
 
 $titulo = "Zibá ¡es como tú!";
+include('mensajes.php');
 ?>
 
 
@@ -25,6 +26,28 @@ $titulo = "Zibá ¡es como tú!";
     <?php include('header.php'); ?>
 
     <main class="container">
+
+    
+        <div class="row">
+            <div class="col">
+<?php if (isset($mensaje)) { ?>
+
+				<div id="mensaje" style="display: inline-block; width: 100%; background-color:<?php if ($_GET['m']==0 || $_GET['m']==2 || $_GET['m']==5) { echo ' skyblue'; } else { echo ' darkred'; } ?>; color: white;">
+					<br>
+					<center><h6 id="mensajeString"><?php echo $mensaje; ?></h6></center>
+					<br>
+				</div>
+<?php } else { ?>
+				<div id="mensaje" style="display: none; width: 100%; background-color: darkgreen; color: white;">
+						<br>
+					    <center><h6 id="mensajeString"></h6></center>
+						<br>
+                </div>
+<?php } ?>
+            </div>
+        </div>
+
+
         <div class="row d-flex justify-content-around mt-3" id="promociones">
             <div class="col">
                 <div id="carouselId" class="carousel slide" data-ride="carousel">
@@ -105,6 +128,14 @@ $titulo = "Zibá ¡es como tú!";
     </main>
 
     <?php include('footer.php');?>
+
+    <?php if(isset($mensaje)) { ?>
+		<script language="javascript" type="text/javascript">
+			window.onload = function() {
+				$('#mensaje').delay(4000).fadeOut('slow')
+			}
+		</script>
+<?php } ?>
 </body>
 
 </html>

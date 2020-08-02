@@ -25,12 +25,12 @@ if (isset($_POST['catidsub'])) {
     $response = json_decode( $result );
 
     if ($http_response_header[0]=="HTTP/1.1 201 Created") {
-        header("Location: ../../cuenta-usuario.php?m=1");
+        header("Location: ../../cuenta-usuario.php?m=33");
     } else {
-        header("Location: ../../cuenta-usuario.php?m=2");
+        header("Location: ../../cuenta-usuario.php?m=34");
     }
 
 } else {
-    header("Location: ../../cuenta-usuario.php?m=3");
+    header("Location: ../../cuenta-usuario.php?m=35");
 }
 ?>

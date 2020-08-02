@@ -53,11 +53,11 @@ if (isset($_SESSION['UID'])) {
                 $response = json_decode( $result );
             }
         }
-        header("Location: ../../carrito.php?m=1");
+        header("Location: ../../carrito.php");
     } else {
-        header("Location: ../../carrito.php?m=3");
+        header("Location: ../../carrito.php?m=7");
     }
 } else {
-    header("Location: ../../carrito.php?m=4");
+    header("Location: ../../carrito.php?m=5");
 }
 ?>
