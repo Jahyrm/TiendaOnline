@@ -82,7 +82,7 @@
                                             <label for="perfil">Actualizar foto de perfil</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="image" name="image" accept=".jpg,.png,.jpeg,.gif">
+                                                    <input type="file" class="custom-file-input" id="image" name="image" lang="es" accept=".jpg,.png,.jpeg,.gif">
                                                     <label id="img0" class="custom-file-label" for="image">Escoger archivo</label>
                                                 </div>
                                             </div>

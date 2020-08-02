@@ -151,3 +151,63 @@ h4 {
 .rela:hover {
     text-decoration: none !important;
 }
+.carrito tr,
+.carrito tr td {
+    vertical-align: middle;
+}
+
+.carrito thead tr th:first-child,
+.carrito tbody tr td:first-child {
+    text-align: center !important;
+    width: 4em;
+    min-width: 1em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+.carrito thead tr th:nth-child(2),
+.carrito tbody tr td:nth-child(2) {
+    text-align: center !important;
+    width: 4em;
+    min-width: 1em;
+    max-width: 8em;
+    word-break: break-all;
+}
+
+.actions {
+    text-align: right !important;
+} 
+
+.carrito .aN {
+    color: #212529;
+    text-decoration: none;
+}
+
+.carrito .aN:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.aN {
+    color: #212529;
+    text-decoration: none;
+}
+
+.aN:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.cart-price {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #54d15e;
+}
+
+.cart-subtotal {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #838383;
+}
+
+.custom-file-label::after { content: "Elegir";}
+
+.radio-control {height: 100px;}

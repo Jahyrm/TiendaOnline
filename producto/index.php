@@ -44,8 +44,9 @@ if (isset($_GET['id'])) {
                                         <p class="pdesc"><?php echo $product["description"]; ?></p>
                                     </div>
                                 </div>
-                                <p class="in-stock"><?php echo $product["stock"]; ?> en stock</p>
-                                <form class="cart form-inline" action="../logic/cart/add.php" method="post">
+                                <p class="<?php if($product["stock"]==0){echo "out"; } else {echo "in"; } ?>-stock"><?php echo $product["stock"]; ?> en stock</p>
+                                <form class="cart form-inline" action="../logic/cart/add.php" method="get">
+                                <input type="hidden" name="id" value="<?php echo $product["id"]; ?>" />
                                     <div class="form-group">
                                         <label class="text-height" for="cantidad">Cantidad: </label>
                                         <input class="cantidad" type="number" step="1" min="1" max="<?php echo $product["stock"]; ?>" name="cantidad" value="1" pattern="[0-9]*" placeholder="" inputmode="numeric">
@@ -84,32 +85,8 @@ foreach ($relacionados["records"] as $relacionado){
                                         <h5 class="card-title"><?php echo $relacionado['name'];?></h5>
                                         <h5 class="card-title">Precio $<?php echo $relacionado['price'];?></h5>
                                         <p class="card-text"><?php echo $relacionado['description'];?></p>
-                                        <button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button>
-                                        <a href="index.php?id=<?php echo $relacionado['id']; ?>"><button class="btn btn-dark" style="width: 100%;" data-toggle="modal" data-target="#producto<?php echo $relacionado['id_producto'];?>">Detalles del producto</button></a>
-                                        <div class="modal fade" id="producto<?php echo $relacionado['id'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $relacionado['id_producto'];?>" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Detalles del producto</h5>
-                                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
-                                                        <div class="mb-2">
-                                                            <h3><?php echo $relacionado['name'];?></h3>
-                                                        </div>
-                                                        <div class="mb-2">
-                                                            <img style="width: 200px;" src=<?php echo $relacionado['image'];?> alt="">
-                                                        </div>
-                                                        <div>
-                                                            <p><?php echo $relacionado['description'];?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a href="../logic/cart/add.php?id=<?php echo $relacionado['id']; ?>"><button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button></a>
+                                        <a href="index.php?id=<?php echo $relacionado['id']; ?>"><button class="btn btn-dark" style="width: 100%;">Detalles del producto</button></a>
                                     </div>
                                 </div>
                             </div>

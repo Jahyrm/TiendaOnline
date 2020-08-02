@@ -355,6 +355,36 @@ class Product{
     }
 
 
+    // update the product
+    function updateStock(){
+        // update query
+        $query = "UPDATE
+                    " . $this->table_name . "
+                SET
+                    STOCK=:stock
+                WHERE
+                    ID_PRODUCTO=:id";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+    
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->stock=htmlspecialchars(strip_tags($this->stock));
+    
+        // bind new values
+        $stmt->bindParam(":stock", $this->stock);
+        $stmt->bindParam(":id", $this->id);
+    
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+    
+        return false;
+    }
+
+
 
     // delete the product
     function delete(){

@@ -94,38 +94,13 @@ $titulo = "Zibá ¡es como tú!";
                         <h5 class="card-title"><?php echo $product['name'];?></h5>
                         <h5 class="card-title">Precio $<?php echo $product['price'];?></h5>
                         <p class="card-text"><?php echo $product['description'];?></p>
-                        <button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button>
-                        <a href="producto/index.php?id=<?php echo $product['id']; ?>"><button class="btn btn-dark" style="width: 100%;" data-toggle="modal" data-target="#producto<?php echo $product['id'];?>">Detalles del producto</button></a>
-                        <div class="modal fade" id="producto<?php echo $product['id'];?>" tabindex="-1" role="dialog" aria-labelledby="producto<?php echo $product['id'];?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Detalles del producto</h5>
-                                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" style="display: flex; flex-direction: column; align-items: center;">
-                                        <div class="mb-2">
-                                            <h3><?php echo $product['name'];?></h3>
-                                        </div>
-                                        <div class="mb-2">
-                                            <img style="width: 200px;" src=<?php echo $product['image'];?> alt="">
-                                        </div>
-                                        <div>
-                                            <p><?php echo $product['description'];?>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="logic/cart/add.php?id=<?php echo $product['id']; ?>"><button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button></a>
+                        <a href="producto/index.php?id=<?php echo $product['id']; ?>"><button class="btn btn-dark" style="width: 100%;">Detalles del producto</button></a>
                     </div>
                 </div>
             </div>
         <?php } ?>
         </div>
-        
 
     </main>
 

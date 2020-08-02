@@ -9,12 +9,29 @@
                 if (isset($_SESSION['UID'])) { ?>
                     <a href="<?php if (isset($prof)) { echo $prof; } ?>cuenta-usuario.php">Mi Cuenta</a>
                     <a href="<?php if (isset($prof)) { echo $prof; } ?>logout.php">Cerrar sesión</a>
+<?php
+$itemsTotales = 0;
+set_error_handler(function ($err_severity, $err_msg, $err_file, $err_line, array $err_context) {
+    throw new ErrorException( $err_msg, 0, $err_severity, $err_file, $err_line );
+}, E_WARNING);
+try {
+    $prodsInCart = json_decode( file_get_contents($env.'api/carrito/read.php?id='.$_SESSION["UID"]), true );
+    foreach ($prodsInCart["records"] as $productCart){
+        $itemsTotales = $itemsTotales + $productCart["cantidad"];
+    }
+?>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>carrito.php">Carrito de compras (<?php echo $itemsTotales; ?>)</a>
+<?php } catch (Exception $e) { ?>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>carrito.php">Carrito de compras (0)</a>
+<?php } 
+restore_error_handler();
+?>
+                    
                 <?php } else { ?>
-                    <a href="<?php if (isset($prof)) { echo $prof; } ?>acceder.php">Acceder/Registrarse</a>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>acceder.php">Acceder</a>
+                    <a href="<?php if (isset($prof)) { echo $prof; } ?>registro.php">Registrarse</a>
                 <?php }
                 ?>
-                
-                <a href="<?php if (isset($prof)) { echo $prof; } ?>carrito.php">Carrito de compras (0) </a>
             </div>
         </div>
         

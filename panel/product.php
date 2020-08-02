@@ -74,7 +74,7 @@ foreach ($subcategorias["records"] as $subcategoria) { ?>
                                             <label for="imagep">Foto del producto</label>
                                             <div class="input-group">
                                                 <div class="custom-file" id="customFile" lang="es">
-                                                    <input type="file" class="custom-file-input" id="imagep" name="imagep" accept=".jpg,.png,.jpeg,.gif" aria-describedby="fileHelp">
+                                                    <input type="file" class="custom-file-input" id="imagep" name="imagep" accept=".jpg,.png,.jpeg,.gif" aria-describedby="fileHelp" lang="es">
                                                     <label id="img1" class="custom-file-label" for="imagep">Escoger Archivo</label>
                                                 </div>
                                             </div>
@@ -267,7 +267,7 @@ foreach ($subcategorias["records"] as $subcategoria) { ?>
                                             <label for="eimagep">Foto del producto</label>
                                             <div class="input-group">
                                                 <div class="custom-file" id="customFile" lang="es">
-                                                    <input type="file" class="custom-file-input" id="eimagep" name="eimagep" accept=".jpg,.png,.jpeg,.gif" aria-describedby="fileHelp">
+                                                    <input type="file" class="custom-file-input" id="eimagep" name="eimagep" accept=".jpg,.png,.jpeg,.gif" aria-describedby="fileHelp" lang="es">
                                                     <label id="img2" class="custom-file-label" for="imagep">Escoger Archivo</label>
                                                 </div>
                                             </div>
