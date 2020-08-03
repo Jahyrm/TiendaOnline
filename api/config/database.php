@@ -6,13 +6,13 @@ class Database{
     private $db_name = "wwecuado_ziba";
     private $username = "wwecuado_zibauser";
     private $password = "S58E{-sD+gix";
-    //public $conn;
+    public $conn;
 
     //private $host = "localhost:3306";
     //private $db_name = "zibabd";
     //private $username = "root";
     //private $password = "";
-    public $conn;
+    //public $conn;
   
     // get the database connection
     public function getConnection(){

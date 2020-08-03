@@ -2,20 +2,22 @@
 session_start();
 include "../globalVars.php";
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && isset($_SESSION["UID"])) {
     $id = $_GET['id'];
 
     $orden = json_decode( file_get_contents($env.'api/orden/read.php?by=orden&id='.$id), true );
+
     
     if(!empty($orden["records"])) {
-    // if datos.
-        if(isset($_COOKIE['logincookie'])) {
-            if (!isset($_SESSION['Recuperado'])) {
-                include 'logic/funciones.php';
-                $id = dec_enc('decrypt', $_COOKIE['logincookie']);
-                recuperarUser($id);
+        if ($_SESSION["UID"]==$orden["records"][0]["user"]["id"]) {
+        // if datos.
+            if(isset($_COOKIE['logincookie'])) {
+                if (!isset($_SESSION['Recuperado'])) {
+                    include 'logic/funciones.php';
+                    $id = dec_enc('decrypt', $_COOKIE['logincookie']);
+                    recuperarUser($id);
+                }
             }
-        }
 
         $titulo = "Factura #".$orden["records"][0]["id"]." | Zibá ¡es como tú!";
         $prof = "../";
@@ -124,7 +126,11 @@ $subtotal = $subtotal + $producto["price"]; ?>
                 </div>
                 <div>
                     <div class="col-md-12">
-                        <p><b>Fecha :</b> 28 June 2017</p>
+<?php
+$partesFecha = explode("-", $orden["records"][0]["fecha"]);
+$mes = intToMes($partesFecha[1]);
+?>
+                        <p><b>Fecha :</b> <?php echo $partesFecha[2].' de '.$mes.' del '.$partesFecha[0]; ?></p>
                         <br />
                         <p><strong><i class="fa fa-barcode fa-5x" aria-hidden="true"></i></strong></p>
                     </div>
@@ -138,8 +144,11 @@ $subtotal = $subtotal + $producto["price"]; ?>
     </body>
 </html>
 <?php
+        } else {
+            header("Location: ../cuenta-usuario.php");
+        }
     } else {
-        header("Location: ../index.php");
+        header("Location: ../cuenta-usuario.php");
     }
 } else {
 	header("Location: ../index.php");

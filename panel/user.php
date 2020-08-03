@@ -130,7 +130,10 @@ try {
                                             <h5 class="card-title">Factura #<?php echo $userOrders["records"][$x]["id"]; ?></h5>
                                             <p class="card-text">Fecha: <?php echo $userOrders["records"][$x]["fecha"];?></p>
                                             <p class="card-text">Total: <?php echo $userOrders["records"][$x]["total"];?></p>
-                                            <a href="logic/factura/imprimir.php?id=<?php echo $userOrders["records"][$x]["id"]; ?>"><button class="btn btn-dark mb-1" style="width: 100%;">Imprimir Factura</button></a>
+                                            <?php $pdfid = $userOrders['records'][$x]['id']; ?>
+                                            <button type="button" onclick="printJS('<?php echo $env; ?>factura/pdfGenerator.php?id=<?php echo $pdfid; ?>&c=true')" class="btn btn-dark mb-1" style="width: 100%;">Imprimir Factura</button>
+                                            <a href="factura/email.php?id=<?php echo $userOrders["records"][$x]["id"]; ?>"><button type="button" class="btn btn-dark mb-1" style="width: 100%;">Enviar al correo</button></a>
+                                            <!--<a href="logic/factura/imprimir.php?id=<?php echo $userOrders["records"][$x]["id"]; ?>"><button class="btn btn-dark mb-1" style="width: 100%;">Imprimir Factura</button></a>-->
                                             <a href="factura/index.php?id=<?php echo $userOrders["records"][$x]["id"]; ?>"><button class="btn btn-dark" style="width: 100%;">Detalles de la factura</button></a>
                                         </div>
                                     </div>

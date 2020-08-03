@@ -23,6 +23,7 @@ if (!isset($_SESSION["UID"])){
 
 <head>
 <?php include('head.php') ?>
+<link rel="stylesheet" type="text/css" href="css/print.min.css">
 </head>
 
 <body class>
@@ -127,6 +128,7 @@ include("panel/subcategoria.php");
         });
     </script>
     <script src="logic/ajax.js"></script>
+    <script src="js/print.min.js"></script>
 </body>
 
 </html>

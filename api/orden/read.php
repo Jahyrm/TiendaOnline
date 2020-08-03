@@ -60,7 +60,7 @@ if($num>0){
             $ord_ant = $id;
 
             $user_item=array(
-                "id" => $idProducto,
+                "id" => $idUsuario,
                 "nombre" => $name,
                 "apellido" => $apellido,
                 "telefono" => $telefono,
@@ -103,7 +103,7 @@ if($num>0){
 
                 $ord_ant = $id;
                 $user_item=array(
-                    "id" => $idProducto,
+                    "id" => $idUsuario,
                     "nombre" => $name,
                     "apellido" => $apellido,
                     "telefono" => $telefono,

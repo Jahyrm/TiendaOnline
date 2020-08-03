@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include "globalVars.php";
 
 if(isset($_COOKIE['logincookie'])) {
 	if (!isset($_SESSION['Recuperado'])) {

@@ -125,6 +125,8 @@
                 $colorError = true;
                 $mensaje = "No se pudo editar los datos.";
                 break;
+            case 45:
+                $mensaje = "La factura se envió a su correo.";
             
         }
     }

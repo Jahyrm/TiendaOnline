@@ -228,3 +228,25 @@ h4 {
     background: #1E1F23;
     color: #fff;
 }
+
+.main2 {
+    background: #ffffff;
+    border-bottom: 15px solid #F81D2D;
+    border-top: 15px solid #1E1F23;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 40px 30px !important;
+    position: relative;
+    box-shadow: 0 1px 21px #808080;
+    font-size:18px;
+}
+
+.main2 thead {
+    background: #1E1F23;
+    color: #fff;
+}
+
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
