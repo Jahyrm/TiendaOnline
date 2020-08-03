@@ -77,14 +77,14 @@ if (isset($_GET["c"]) && isset($_GET['id'])) {
 
 $subtotal = 0;
 foreach ($userOrder["records"][0]["productos"] as $producto) { 
-    $subtotal = $subtotal + $producto["price"];
+    $subtotal = $subtotal + ($producto["price"]*$producto["cant"]);
 
             $content.= '
                     <tr style="font-size: 8px !important;">
                         <td style="width: 40%;">'.$producto["name"].'</td>
                         <td style="width: 20%;"><i class="fa fa-usd" aria-hidden="true"></i> $'.$producto["price"].' </td>
                         <td style="width: 20%;">'.$producto["cant"].'</td>
-                        <td style="width: 20%;"><i class="fa fa-usd" aria-hidden="true"></i> $'.($producto["price"]*$producto["cant"]).' </td>
+                        <td style="width: 20%;"><i class="fa fa-usd" aria-hidden="true"></i> $'.round($producto["price"]*$producto["cant"],2).' </td>
                     </tr>';
 }
     $content .= '
@@ -115,7 +115,7 @@ if(!empty($userOrder["records"][0]["iva"])) {
     </td>
     <td>
     <p>
-        <i class="fa fa-usd" aria-hidden="true"></i>$ '.$subtotal.'
+        <i class="fa fa-usd" aria-hidden="true"></i>$ '.round($subtotal,2).'
     </p>
     ';
 

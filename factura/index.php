@@ -68,12 +68,12 @@ if (isset($_GET['id']) && isset($_SESSION["UID"])) {
 <?php 
 $subtotal = 0;
 foreach ($orden["records"][0]["productos"] as $producto) { 
-$subtotal = $subtotal + $producto["price"]; ?>
+$subtotal = $subtotal + ($producto["price"]*$producto["cant"]); ?>
                             <tr>
                                 <td class="col-md-9"><?php echo $producto["name"]; ?></td>
                                 <td class="col-md-3"><i class="fa fa-usd" aria-hidden="true"></i> <?php echo $producto["price"]; ?> </td>
                                 <td class="col-md-9"><?php echo $producto["cant"]; ?></td>
-                                <td class="col-md-3"><i class="fa fa-usd" aria-hidden="true"></i> <?php echo $producto["price"]*$producto["cant"]; ?> </td>
+                                <td class="col-md-3"><i class="fa fa-usd" aria-hidden="true"></i> <?php echo round($producto["price"]*$producto["cant"], 2); ?> </td>
                             </tr>
 <?php } ?>
                             <tr>
@@ -97,7 +97,7 @@ $subtotal = $subtotal + $producto["price"]; ?>
 							    </td>
                                 <td>
                                 <p>
-                                    <strong><i class="fa fa-usd" aria-hidden="true"></i> <?php echo $subtotal; ?> </strong>
+                                    <strong><i class="fa fa-usd" aria-hidden="true"></i> <?php echo round($subtotal,2); ?> </strong>
                                 </p>
 
 
