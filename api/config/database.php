@@ -2,16 +2,16 @@
 class Database{
   
     // specify your own database credentials
-    //private $host = "216.104.47.210:3306";
-    //private $db_name = "wwecuado_ziba";
-    //private $username = "wwecuado_zibauser";
-    //private $password = "S58E{-sD+gix";
+    private $host = "216.104.47.210:3306";
+    private $db_name = "wwecuado_ziba";
+    private $username = "wwecuado_zibauser";
+    private $password = "S58E{-sD+gix";
     //public $conn;
 
-    private $host = "localhost:3306";
-    private $db_name = "zibabd";
-    private $username = "root";
-    private $password = "";
+    //private $host = "localhost:3306";
+    //private $db_name = "zibabd";
+    //private $username = "root";
+    //private $password = "";
     public $conn;
   
     // get the database connection
