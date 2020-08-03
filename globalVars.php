@@ -1,13 +1,13 @@
 <?php
-$desarrollo = true;
+$desarrollo = false;
 if ($desarrollo) {
     $env = "http://localhost/TiendaOnline/";
 } else{
     $env = "https://zibareal.herokuapp.com/";
 }
 
-$iva = 12;
-$descuento = 1.55;
+//$iva = 12;
+//$descuento = 1.55;
 
 $nombreEmpresa = "Ziba";
 $direccionEmpresa = "Cuenca, Ecuador";
