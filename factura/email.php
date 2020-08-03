@@ -169,7 +169,7 @@ if (isset($_GET['id']) && isset($_SESSION["UID"])) {
                     <div style="font-size: 10px;">
                         <div class="col-md-12">
                             <p><b>Fecha :</b> '.$partesFecha[2].' de '.$mes.' del '.$partesFecha[0].'</p>
-                            <p><img style="width: 75px; height: 50px;" src="https://zibareal.herokuapp.com/img/barcode.png" /></p>
+                            <p><img style="width: 75px; height: 50px;" src="https://zibareal.herokuapp.com/img/barcode.jpg" /></p>
                         </div>
                     </div>
                 </div>
