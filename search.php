@@ -2,9 +2,9 @@
 session_start();
 include "globalVars.php";
 
-if (isset($_GET['s'])) {
+if (isset($_GET['q'])) {
 
-    $url = $env.'api/product/search.php?s='.$_GET['s'];
+    $url = $env.'api/product/search.php?s='.$_GET['q'];
 
 
     set_error_handler(function ($err_severity, $err_msg, $err_file, $err_line, array $err_context) {
@@ -39,7 +39,7 @@ if (isset($_GET['s'])) {
 
     <div clas="col-12 pb-3">
     <br/>
-    <center><h2>Resultados de la búsqueda: <?php echo $_GET["s"]; ?></h2></center>
+    <center><h2>Resultados de la búsqueda: <?php echo $_GET["q"]; ?></h2></center>
     <br/><br/>
     </div>
 

@@ -52,6 +52,7 @@ if (isset($_GET['c']) || isset($_GET['s'])) {
 
     </head>
     <body>
+
 <?php include('../header.php'); ?>
 
 <main class="container">

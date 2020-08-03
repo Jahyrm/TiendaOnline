@@ -23,7 +23,9 @@ include('mensajes.php');
     <body>
 
 
-    <?php include('header.php'); ?>
+    <?php 
+    $activado = 1;
+    include('header.php'); ?>
 
     <main class="container">
 

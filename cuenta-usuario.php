@@ -26,7 +26,10 @@ if (!isset($_SESSION["UID"])){
 </head>
 
 <body class>
-    <?php include('header.php'); ?>
+    
+    <?php 
+    $activado = 0;
+    include('header.php'); ?>
 
 
     <main class="container">

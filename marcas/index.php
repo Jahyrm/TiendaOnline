@@ -36,7 +36,10 @@ if(isset($_COOKIE['logincookie'])) {
 
     </head>
     <body>
-<?php include('../header.php'); ?>
+
+<?php
+$activado = 2;
+include('../header.php'); ?>
 
 <main class="container">
 

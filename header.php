@@ -48,18 +48,24 @@ restore_error_handler();
 
                                 <div class="collapse navbar-collapse" id="menuNavegacion">
                                     <ul class="navbar-nav mr-auto">
-                                        <li class="active nav-item mx-lg-1"><a class="nav-link" href="<?php if (isset($prof)) { echo $prof; } ?>index.php">Inicio</a></li>
-                                        <li class="nav-item mx-lg-1"><a href="<?php if (isset($prof)) { echo $prof; } ?>marcas/" class="nav-link">Marcas</a></li>
+                                        <li class="<?php if(isset($activado)){if($activado==1) {echo "active";}} ?> nav-item mx-lg-1"><a class="nav-link" href="<?php if (isset($prof)) { echo $prof; } ?>index.php">Inicio</a></li>
+                                        <li class="<?php if(isset($activado)){if($activado==2) {echo "active";}} ?> nav-item mx-lg-1"><a href="<?php if (isset($prof)) { echo $prof; } ?>marcas/" class="nav-link">Marcas</a></li>
 
 <?php $categorias = json_decode( file_get_contents($env.'api/category/readAll.php'), true );
+if (isset($_GET["c"])) {
+    $conCats = 0;
+}
 foreach ($categorias["records"] as $categoria) {
+    if (isset($_GET["c"])) {
+        $conCats = $conCats+1;
+    }
     if(!empty($categoria["subcategories"])) { ?>
-                                        <li class="nav-item dropdown mx-lg-1">
+                                        <li class="<?php if(isset($_GET["c"])){if($_GET["c"]==$conCats){echo "active";}}; ?> nav-item dropdown mx-lg-1">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style = "text-transform:capitalize;"><?php echo ucfirst(strtolower($categoria["name"])); ?></a>
                                             <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-<?php foreach($categoria["subcategories"] as $scItm) { ?>
 
+<?php foreach($categoria["subcategories"] as $scItm) { ?>
                                                 <li><a href="<?php if (isset($prof)) { echo $prof; } ?>tienda/?c=<?php echo $categoria["id"]; ?>&s=<?php echo $scItm["id"]; ?>" class="dropdown-item"><?php echo $scItm["name"]; ?></a></li>
 <?php } ?>
                                             </ul>
@@ -74,7 +80,7 @@ foreach ($categorias["records"] as $categoria) {
                                     </ul>
                                     <div class="text-right">
                                     <form action="<?php if (isset($prof)) { echo $prof; } ?>search.php" class="form-inline w-100" method="get">
-                                        <input class="form-control mr-sm-2" type="search" name="s" id="s" placeholder="¿Qué estás buscando?">
+                                        <input class="form-control mr-sm-2" type="search" name="q" id="q" placeholder="¿Qué estás buscando?">
                                         <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
                                     </form>
                                     <div>
