@@ -77,7 +77,7 @@ if (isset($_POST['pais'])) {
                     'idorder' => $idOrden,
                     'idprod' => $productCart["id_prod"],
                     'cantidad' => $productCart["cantidad"],
-                    'precio' => $productCart["product"][0]["price"]
+                    'precio' => $productCart["product"]["price"]
                 );
                 // Send Order JSON object
                 $options = array(
@@ -95,7 +95,7 @@ if (isset($_POST['pais'])) {
                 // UPDATE STOCK
                 $data = array(
                     'id' => $productCart["id_prod"],
-                    'stock' => ($productCart["product"][0]["stock"] - $productCart["cantidad"]) 
+                    'stock' => ($productCart["product"]["stock"] - $productCart["cantidad"]) 
                 );
                 // Send Order JSON object
                 $options = array(

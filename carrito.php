@@ -53,20 +53,20 @@ $subtotal = 0;
 $total = 0;
 if($itemsTotales!=0) {
     foreach ($prodsInCart["records"] as $product){ 
-        $subtotal = $subtotal + ($product["product"][0]["price"]*$product["cantidad"]);
+        $subtotal = $subtotal + ($product["product"]["price"]*$product["cantidad"]);
 ?>
                         <tr>
                             <td><a href="logic/cart/delete.php?id=<?php echo $product["id_prod"] ?>" class="btn btn-dark">×</a></td>
-                            <td><a class="aN" href="producto/index.php?id=<?php echo $product["id_prod"] ?>"><img src="<?php echo $product["product"][0]["image"]; ?>" width="50" height="52"/></a></td>
-                            <td><a class="aN" href="producto/index.php?id=<?php echo $product["id_prod"] ?>"><?php echo $product["product"][0]["name"]; ?></a></td>
-                            <td class="cart-price"><b><?php echo $product["product"][0]["price"]; ?></b></td>
+                            <td><a class="aN" href="producto/index.php?id=<?php echo $product["id_prod"] ?>"><img src="<?php echo $product["product"]["image"]; ?>" width="50" height="52"/></a></td>
+                            <td><a class="aN" href="producto/index.php?id=<?php echo $product["id_prod"] ?>"><?php echo $product["product"]["name"]; ?></a></td>
+                            <td class="cart-price"><b><?php echo $product["product"]["price"]; ?></b></td>
                             <td>
                                 <div class="form-group">
                                     <label class="text-height" for="cantidad">Cantidad: </label>
-                                    <input class="cantidad" type="number" step="1" min="0" max="<?php echo $product["product"][0]["stock"]; ?>" name="cantidad-<?php echo $product["id_prod"]; ?>" value="<?php echo $product["cantidad"]; ?>" pattern="[0-9]*" placeholder="" inputmode="numeric">
+                                    <input class="cantidad" type="number" step="1" min="0" max="<?php echo $product["product"]["stock"]; ?>" name="cantidad-<?php echo $product["id_prod"]; ?>" value="<?php echo $product["cantidad"]; ?>" pattern="[0-9]*" placeholder="" inputmode="numeric">
                                 </div>
                             </td>
-                            <td class="cart-subtotal"><b><?php echo ($product["product"][0]["price"]*$product["cantidad"]); ?></b></td>
+                            <td class="cart-subtotal"><b><?php echo ($product["product"]["price"]*$product["cantidad"]); ?></b></td>
                         </tr>
 <?php } 
         if(isset($iva)) {
@@ -106,14 +106,14 @@ if($itemsTotales!=0) {
                             <td><?php echo $subtotal; ?></td>
                         </tr>
 
-<?php   if(isset($descuento)) { ?>
+<?php   if($subtotal!=0 && isset($descuento)) { ?>
                         <tr>
                             <th>Descuento: </th>
                             <td><?php echo $descuento; ?></td>
                         </tr>
         <?php } ?>
 
-<?php   if(isset($iva)) { ?>
+<?php   if($subtotal!=0 && isset($iva)) { ?>
                         <tr>
                             <th>Iva <?php echo $iva."%: "; ?></th>
                 <?php if(isset($descuento)) { ?>

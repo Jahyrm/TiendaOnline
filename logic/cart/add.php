@@ -4,28 +4,37 @@ include "../../globalVars.php";
 
 
 if (strpos($_SERVER['HTTP_REFERER'], '?') !== false) {
-    $tieneId = false;
-    $porid = 0;
+
+    $tieneParams = false;
+    $porid = "";
     $porciones = explode("?", $_SERVER['HTTP_REFERER']);
-    foreach($porciones as $porcion) {
-        if (strpos($porcion, 'id=') !== false) {
-            $tieneId= true;
-            $porcionesDos = explode("&", $porcion);
-            foreach($porcionesDos as $porcionDos) {
-                if (strpos($porcionDos, 'id=') !== false) {
-                    $porid = $porcionDos;
-                }
+    if (strpos($porciones[1], 'id=') !== false || strpos($porciones[1], 'c=') !== false || strpos($porciones[1], 's=') !== false) {
+        
+        $tieneParams= true;
+
+        $porcionesDos = explode("&", $porciones[1]);
+        foreach($porcionesDos as $porcionDos) {
+            if (strpos($porcionDos, 'id=') !== false) {
+                if($porid=="") {$porid=$porcionDos;} else {$porid=$porid."&".$porcionDos;}
             }
-            break;
+
+            if (strpos($porcionDos, 'c=') !== false) {
+                if($porid=="") {$porid=$porcionDos;} else {$porid=$porid."&".$porcionDos;}
+            }
+
+            if (strpos($porcionDos, 's=') !== false) {
+                if($porid=="") {$porid=$porcionDos;} else {$porid=$porid."&".$porcionDos;}
+            }
+
         }
     }
-    if($tieneId) {
+    if($tieneParams) {
         $url = strtok($_SERVER['HTTP_REFERER'], '?')."?".$porid;
     } else {
         $url = strtok($_SERVER['HTTP_REFERER'], '?');
     }
 } else {
-    $tieneId = false;
+    $tieneParams = false;
     $url = $_SERVER['HTTP_REFERER'];
 }
 
@@ -54,7 +63,7 @@ if (isset($_GET['id'])) {
             foreach ($prodsInCart["records"] as $productCart){
                 if($productCart["id_prod"]==$prodid) {
                     $already = true;
-                    $stock = $productCart["product"][0]["stock"];
+                    $stock = $productCart["product"]["stock"];
                     $inCart = $productCart["cantidad"];
                     $cant = $cant + $productCart["cantidad"];
                     break;
@@ -63,7 +72,7 @@ if (isset($_GET['id'])) {
 
             if ($already) {
                 if($cant>$stock) {
-                    if($tieneId) { header("Location: " . $url."&m=0&s=".$stock."&a=".$inCart); } else { header("Location: " . $url."?m=0&s=".$stock."&a=".$inCart); }
+                    if($tieneParams) { header("Location: " . $url."&m=0&s=".$stock."&a=".$inCart); } else { header("Location: " . $url."?m=0&s=".$stock."&a=".$inCart); }
                     die();
                 }
             }
@@ -94,7 +103,7 @@ if (isset($_GET['id'])) {
             if ($http_response_header[0]=="HTTP/1.1 200 OK" || $http_response_header[0]=="HTTP/1.1 201 Created") {
                 header("Location: " . $url);
             } else {
-                if($tieneId) { header("Location: " . $url."&m=1"); } else { header("Location: " . $url."?m=1"); }
+                if($tieneParams) { header("Location: " . $url."&m=1"); } else { header("Location: " . $url."?m=1"); }
             }
 
         } else {
@@ -128,13 +137,13 @@ if (isset($_GET['id'])) {
             if ($http_response_header[0]=="HTTP/1.1 201 Created") {
                 header("Location: " . $url);
             } else {
-                if($tieneId) { header("Location: " . $url."&m=1"); } else { header("Location: " . $url."?m=1"); }
+                if($tieneParams) { header("Location: " . $url."&m=1"); } else { header("Location: " . $url."?m=1"); }
             }
         }
     } else {
-        if($tieneId) { header("Location: " . $url."&m=2"); } else { header("Location: " . $url."?m=2"); }
+        if($tieneParams) { header("Location: " . $url."&m=2"); } else { header("Location: " . $url."?m=2"); }
     }
 } else {
-    if($tieneId) { header("Location: " . $url."&m=3"); } else { header("Location: " . $url."?m=3"); }
+    if($tieneParams) { header("Location: " . $url."&m=3"); } else { header("Location: " . $url."?m=3"); }
 }
 ?>

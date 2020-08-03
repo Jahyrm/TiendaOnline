@@ -64,9 +64,10 @@ class Category{
         //select all data
         $query = "SELECT c.*, s.NOMBRE as SUB_NOMBRE
         FROM
-            (SELECT cs.ID_CATEGORIA, cs.ID_SUBCAT, c.NOMBRE FROM categoria_subcategoria cs INNER JOIN " . $this->table_name . " c ON cs.ID_CATEGORIA = c.ID_CATEGORIA) c
-        INNER JOIN subcategoria s
-        ON c.ID_SUBCAT = s.ID_SUBCAT";
+            (SELECT c.ID_CATEGORIA, cs.ID_SUBCAT, c.NOMBRE FROM categoria_subcategoria cs RIGHT JOIN " . $this->table_name . " c ON cs.ID_CATEGORIA = c.ID_CATEGORIA) c
+        LEFT JOIN subcategoria s
+        ON c.ID_SUBCAT = s.ID_SUBCAT
+        ORDER BY c.ID_CATEGORIA";
   
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();

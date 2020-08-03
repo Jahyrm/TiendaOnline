@@ -409,5 +409,59 @@ class Product{
         return false;
     }
 
+
+// search products
+function search($keywords){
+
+
+        // select all query
+        $query = "SELECT p.*, c.NOMBRE as CAT_NOMBRE
+        FROM
+            (SELECT p.*, s.NOMBRE as SUBCAT_NOMBRE
+            FROM
+                (SELECT p.*, m.NOMBRE as MARCA_NOMBRE
+                FROM 
+                    (SELECT
+                        p.*, cs.ID_CATEGORIA
+                    FROM
+                        " . $this->table_name . " p
+                    INNER JOIN
+                        categoria_subcategoria cs
+                    ON
+                        p.ID_SUBCAT = cs.ID_SUBCAT) p
+                INNER JOIN
+                    marca m
+                ON
+                    p.ID_MARCA = m.ID_MARCA) p
+            INNER JOIN
+                subcategoria s
+            ON
+                p.ID_SUBCAT	 = s.ID_SUBCAT) p
+        INNER JOIN
+            categoria c
+        ON
+            p.ID_CATEGORIA = c.ID_CATEGORIA
+        WHERE p.NOMBRE LIKE ? OR p.DESCRIPCION LIKE ? OR SUBCAT_NOMBRE LIKE ?
+        ORDER BY
+            p.ID_PRODUCTO ASC";
+  
+    // prepare query statement
+    $stmt = $this->conn->prepare($query);
+  
+    // sanitize
+    $keywords=htmlspecialchars(strip_tags($keywords));
+    $keywords = "%{$keywords}%";
+  
+    // bind
+    $stmt->bindParam(1, $keywords);
+    $stmt->bindParam(2, $keywords);
+    $stmt->bindParam(3, $keywords);
+  
+    // execute query
+    $stmt->execute();
+  
+    return $stmt;
+}
+
 }
 ?>

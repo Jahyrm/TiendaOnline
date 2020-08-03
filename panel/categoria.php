@@ -51,11 +51,10 @@
                     <div class="col">
                             <label for="catided">Categoría</label>
                             <select class="form-control" id="catided" name="catided">
-<?php $categorias = json_decode( file_get_contents($env.'api/category/read.php'), true );
+<?php
 foreach ($categorias["records"] as $categoria) { ?>
                                                     <option value="<?php echo $categoria["id"]; ?>"><?php echo $categoria["name"] ?></option>
 <?php } ?>
-                                                </select>
                             </select>
                         </div>
                         <div class="col">

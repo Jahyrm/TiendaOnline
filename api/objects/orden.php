@@ -26,9 +26,9 @@ class Orden{
         // query to insert record
         $query = "INSERT INTO
                     " . $this->table_name . " 
-                    (idUsuario, idDomicilio, idMetodo, cupon, descuento, iva, total)
+                    (idUsuario, idDomicilio, idMetodo, fecha, cupon, descuento, iva, total)
                 VALUES
-                    (:iduser, :iddom, :idmet, :cupon, :descuento, :iva, :total)";
+                    (:iduser, :iddom, :idmet, CURDATE(), :cupon, :descuento, :iva, :total)";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -61,5 +61,51 @@ class Orden{
         return false;
         
     }
+
+
+    // read order
+    function read($user){
+
+        if($user) {
+            $where = " WHERE idUsuario=? ";
+        } else {
+            $where = " WHERE id=? ";
+        }
+
+        // select all query
+        $query = "SELECT dc.*, p.IMAGEN, p.NOMBRE, p.DESCRIPCION 
+        FROM 
+            (SELECT of.*, dt.idProducto, dt.cantidad, dt.precio 
+                FROM detalle_orden dt 
+                INNER JOIN 
+                    (SELECT o.id, o.idUsuario, o.idDomicilio, o.idMetodo, o.fecha, o.cupon, o.descuento, o.iva, o.total, du.pais, du.provincia, du.ciudad, du.cp, du.calle, du.calleDos, du.referencia, du.name, du.apellido, du.telefono, du.fecha_nac, du.email, m.nombre as metodo_nombre 
+                        FROM orden o 
+                        INNER JOIN 
+                            (SELECT d.*, u.name, u.apellido, u.telefono, u.fecha_nac, u.email 
+                                FROM domicilio d 
+                            INNER JOIN users u ON d.idUsuario = u.id) du
+                        ON o.idDomicilio=du.id
+                        INNER JOIN metodo_pago m 
+                        ON o.idMetodo=m.id) of
+                ON dt.idOrden=of.id) dc 
+            INNER JOIN producto p ON dc.idProducto=p.ID_PRODUCTO".$where."
+    ORDER BY dc.id ASC";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // bind id of product to be updated
+        if($user) {
+            $stmt->bindParam(1, $this->idUsuario);
+        } else {
+            $stmt->bindParam(1, $this->id);
+        }
+    
+        // execute query
+        $stmt->execute();
+    
+        return $stmt;
+    }
+    
 }
 ?>

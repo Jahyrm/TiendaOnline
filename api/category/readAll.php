@@ -36,10 +36,12 @@ if($num>0){
         // just $name only
         extract($row);
 
-        $subcategory_item=array(
-            "id" => $ID_SUBCAT,
-            "name" => $SUB_NOMBRE
-        );
+        if(isset($ID_SUBCAT)) {
+            $subcategory_item=array(
+                "id" => $ID_SUBCAT,
+                "name" => $SUB_NOMBRE
+            );
+        }
 
         if ($cat_ant==0) {
 
@@ -50,13 +52,14 @@ if($num>0){
             );
             $category_item["subcategories"]=array();
 
-            array_push($category_item["subcategories"], $subcategory_item);
-
+            if(isset($ID_SUBCAT)) {
+                array_push($category_item["subcategories"], $subcategory_item);
+            }
         } else {
             if ($cat_ant==$ID_CATEGORIA) {
-
-                array_push($category_item["subcategories"], $subcategory_item);
-
+                if(isset($ID_SUBCAT)) {
+                    array_push($category_item["subcategories"], $subcategory_item);
+                }
             } else {
 
                 array_push($categories_arr["records"], $category_item);
@@ -66,20 +69,16 @@ if($num>0){
                     "id" => $ID_CATEGORIA,
                     "name" => $NOMBRE
                 );
-                $category_item["subcategories"]=array();
-                array_push($category_item["subcategories"], $subcategory_item);
-                
+
+                if(isset($ID_SUBCAT)) {
+                    $category_item["subcategories"]=array();
+                    array_push($category_item["subcategories"], $subcategory_item);
+                }
 
             }
         }
-        
-
-        
-  
-        
-  
-        
     }
+    array_push($categories_arr["records"], $category_item);
   
   
     // set response code - 200 OK

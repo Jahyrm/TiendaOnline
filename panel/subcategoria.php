@@ -64,7 +64,6 @@ foreach ($categorias["records"] as $categoria) { ?>
 foreach ($subcategorias["records"] as $subcategoria) { ?>
                                                     <option value="<?php echo $subcategoria["id"]; ?>"><?php echo $subcategoria["name"] ?></option>
 <?php } ?>
-                                                </select>
                             </select>
                         </div>
                         <div class="col">
@@ -74,7 +73,6 @@ foreach ($subcategorias["records"] as $subcategoria) { ?>
 foreach ($categorias["records"] as $categoria) { ?>
                                                     <option value="<?php echo $categoria["id"]; ?>"><?php echo $categoria["name"] ?></option>
 <?php } ?>
-                                                </select>
                             </select>
                         </div>
                         <div class="col">

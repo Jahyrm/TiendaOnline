@@ -61,29 +61,29 @@ include('mensajes.php');
                         <div class="carousel-item active">
                             <img src="img/local.jpg" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
-                                <h3>Title</h3>
-                                <p>Description</p>
+                                <h3>Calidad Premium</h3>
+                                <p>En Cosméticos y Joyería</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="img/producto1.jpg" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
-                                <h3>Title</h3>
-                                <p>Description</p>
+                                <h3>Ofertas</h3>
+                                <p>Los mejores precios y descuentos.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="img/producto2.jpg" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
-                                <h3>Title</h3>
-                                <p>Description</p>
+                                <h3>Marcas</h3>
+                                <p>Encuentra siempre las mejores marcas en Ziba</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="img/promo.jpg" class="d-block w-100" alt="">
                             <div class="carousel-caption d-none d-md-block">
-                                <h3>Title</h3>
-                                <p>Description</p>
+                                <h3>Envíos</h3>
+                                <p>Contamos con envíos y devoluciones a todo el país.</p>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ include('mensajes.php');
                     </a>
                     <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">Siguiente</span>
                     </a>
                 </div>
             </div>
@@ -109,16 +109,18 @@ include('mensajes.php');
 
         <div class="row py-4">
         <?php $products = json_decode( file_get_contents($env.'api/product/read.php'), true );?>
-        <?php foreach ($products["records"] as $product){ ?>
-            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+        <?php for ($x=0; $x<12; $x++){ 
+            $product = $products["records"][$x];
+        ?>
+            <div class="col-3 mb-4">
                 <div class="card mx-auto">
-                    <img class="card-img-top" src=<?php echo $product['image'];?> alt="" style="height: 250px;">
+                    <img class="card-img-top" src="<?php echo $product['image'];?>" alt="" style="height: 250px;">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $product['name'];?></h5>
                         <h5 class="card-title">Precio $<?php echo $product['price'];?></h5>
                         <p class="card-text"><?php echo $product['description'];?></p>
                         <a href="logic/cart/add.php?id=<?php echo $product['id']; ?>"><button class="btn btn-dark mb-1" style="width: 100%;">Agregar al carrito</button></a>
-                        <a href="producto/index.php?id=<?php echo $product['id']; ?>"><button class="btn btn-dark" style="width: 100%;">Detalles del producto</button></a>
+                        <a href="producto/?id=<?php echo $product['id']; ?>"><button class="btn btn-dark" style="width: 100%;">Detalles del producto</button></a>
                     </div>
                 </div>
             </div>

@@ -26,6 +26,7 @@
                                             <label for="marcaid">Marca</label>
                                                 <select class="form-control" id="marcaid" name="marcaid">
 <?php
+$marcas = json_decode( file_get_contents($env.'api/marca/read.php'), true );
 foreach ($marcas["records"] as $marca) { ?>
                                                     <option value="<?php echo $marca["id"]; ?>"><?php echo $marca["name"] ?></option>
 <?php } ?>

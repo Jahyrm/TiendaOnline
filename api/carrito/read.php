@@ -50,9 +50,9 @@ if($num>0){
                 "id_prod" => $idProducto,
                 "cantidad" => $cantidad
             );
-            $item["product"]=array();
+            $item["product"]=$product_arr;
 
-            array_push($item["product"], $product_arr);
+            //array_push($item["product"], $product_arr);
             
             array_push($items_arr["records"], $item);
         }

@@ -39,72 +39,49 @@ restore_error_handler();
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                            <div class="container">
-                                <a href="index.php" class="navbar-brand">Inicio </a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavegacion" aria-expanded="false" aria-label="Alternar menú">
-                                    <span class="navbar-toggle-icon"></span>
-                                </button>
+
+                        <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark bg-dark">
+                            <div class="container container-fluid">
+                                <div class="navbar-header">
+                                    <a href="<?php if (isset($prof)) { echo $prof; } ?>index.php" class="navbar-brand">Ziba</a>
+                                </div>
+
                                 <div class="collapse navbar-collapse" id="menuNavegacion">
                                     <ul class="navbar-nav mr-auto">
+                                        <li class="active nav-item mx-lg-1"><a class="nav-link" href="<?php if (isset($prof)) { echo $prof; } ?>index.php">Inicio</a></li>
+                                        <li class="nav-item mx-lg-1"><a href="<?php if (isset($prof)) { echo $prof; } ?>marcas/" class="nav-link">Marcas</a></li>
+
+<?php $categorias = json_decode( file_get_contents($env.'api/category/readAll.php'), true );
+foreach ($categorias["records"] as $categoria) {
+    if(!empty($categoria["subcategories"])) { ?>
                                         <li class="nav-item dropdown mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                                                Marcas
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown">
-                                            <?php $marcas = json_decode( file_get_contents($env.'api/marca/read.php'), true );?>
-                                            <?php foreach ($marcas["records"] as $marca){ ?>
-                                                <a href="#" class="dropdown-item"><?php echo $marca['name'];?></a>
-                                            <?php } ?>
-                                            </div>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style = "text-transform:capitalize;"><?php echo ucfirst(strtolower($categoria["name"])); ?></a>
+                                            <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+<?php foreach($categoria["subcategories"] as $scItm) { ?>
+
+                                                <li><a href="<?php if (isset($prof)) { echo $prof; } ?>tienda/?c=<?php echo $categoria["id"]; ?>&s=<?php echo $scItm["id"]; ?>" class="dropdown-item"><?php echo $scItm["name"]; ?></a></li>
+<?php } ?>
+                                            </ul>
                                         </li>
-
-
-                                        <li class="nav-item dropdown  mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown1" data-toggle="dropdown">
-                                                Maquillaje
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown1">
-                                                <a href="#" class="dropdown-item">Maquillaje 1</a>
-                                                <a href="#" class="dropdown-item">Maquillaje 2</a>
-
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item dropdown  mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown2" data-toggle="dropdown">
-                                                Capilar
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown2">
-                                                <a href="#" class="dropdown-item">ca 1</a>
-                                                <a href="#" class="dropdown-item">ca 2</a>
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item dropdown  mx-lg-1">
-                                            <a href="" class="nav-link dropdown-toggle" id="navbarDropdown3" data-toggle="dropdown">
-                                                Cuidado personal
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="#navbarDropdown3">
-                                                <a href="#" class="dropdown-item">Cuidado 1</a>
-                                                <a href="#" class="dropdown-item">Cuidado 2</a>
-                                            </div>
-                                        </li>
-
-
-                                        <li class="nav-item  mx-lg-2">
-                                            <a href="" class="nav-link">Otros</a>
-                                        </li>
+<?php
+    } else { ?>
+                                        <li class="nav-item mx-lg-1"><a href="<?php if (isset($prof)) { echo $prof; } ?>tienda/?c=<?php echo $categoria["id"]; ?>" class="nav-link"><?php echo $categoria["name"]; ?></a></li>
+<?php
+    }
+?>
+<?php } ?>
                                     </ul>
-                                    <form action="" class="form-inline w-100" my-2 my-lg-0>
-                                        <input type="text" class="form-control mr-sm-2" type="search" placeholder="¿Qué estás buscando?">
+                                    <div class="text-right">
+                                    <form action="<?php if (isset($prof)) { echo $prof; } ?>search.php" class="form-inline w-100" method="get">
+                                        <input class="form-control mr-sm-2" type="search" name="s" id="s" placeholder="¿Qué estás buscando?">
                                         <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
                                     </form>
+                                    <div>
                                 </div>
                             </div>
                         </nav>
+                        
                     </div>
                 </div>
             </div>

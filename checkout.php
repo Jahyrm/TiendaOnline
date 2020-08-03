@@ -78,7 +78,7 @@ if (!isset($_SESSION["UID"])){
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="referencia">Código Postal: </label>
+                        <label for="referencia">Referencia: </label>
                         <textarea class="form-control" id="referencia" name="referencia"></textarea>
                     </div>
                 </div>
@@ -100,11 +100,11 @@ if (!isset($_SESSION["UID"])){
 if($itemsTotales!=0) {
     $subtotal = 0;
     foreach ($prodsInCart["records"] as $product){ 
-        $subtotal = $subtotal + ($product["product"][0]["price"]*$product["cantidad"]);
+        $subtotal = $subtotal + ($product["product"]["price"]*$product["cantidad"]);
 ?>
                             <tr>
-                                <td><?php echo $product["product"][0]["name"]; ?> <span class="product_quantity">x <?php echo $product["cantidad"]; ?></span></td>
-                                <td><?php echo ($product["product"][0]["price"]*$product["cantidad"]); ?></td>
+                                <td><?php echo $product["product"]["name"]; ?> <span class="product_quantity">x <?php echo $product["cantidad"]; ?></span></td>
+                                <td><?php echo ($product["product"]["price"]*$product["cantidad"]); ?></td>
                             </tr>
 <?php } 
         if(isset($iva)) {
@@ -126,14 +126,14 @@ if($itemsTotales!=0) {
                                 <td><?php echo $subtotal; ?></td>
                             </tr>
 
-    <?php   if(isset($descuento)) { ?>
+    <?php   if($subtotal!=0 && isset($descuento)) { ?>
                             <tr>
                                 <th>Descuento: </th>
                                 <td><?php echo $descuento; ?></td>
                             </tr>
             <?php } ?>
 
-    <?php   if(isset($iva)) { ?>
+    <?php   if($subtotal!=0 && isset($iva)) { ?>
                             <tr>
                                 <th>Iva <?php echo $iva."%: "; ?></th>
                     <?php if(isset($descuento)) { ?>
@@ -198,7 +198,14 @@ foreach ($metodos["records"] as $metodo) { ?>
         </div>
         <input type="hidden" value="<?php echo round($total, 2); ?>" name="total" id="total">
         <input type="hidden" value="<?php if(isset($descuento)){echo round($descuento, 2); } ?>" name="descuento" id="descuento">
-        <input type="hidden" value="<?php if(isset($iva)){echo round(($subtotal*($iva/100)), 2); } ?>" name="iva" id="iva">
+        <input type="hidden" value="<?php if(isset($iva)){
+            if(isset($descuento)) {
+                echo round((($subtotal-$descuento)*($iva/100)), 2);
+            } else {
+                echo round(($subtotal*($iva/100)), 2);
+            }
+            } 
+        ?>" name="iva" id="iva">
         <input type="hidden" value="" name="cupon" id="cupon">
         </form>
     </main>

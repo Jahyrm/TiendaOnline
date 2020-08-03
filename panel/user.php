@@ -107,6 +107,48 @@
                         <div id="collapseThree" class="collapse" data-parent="#accordion">
                             <div class="card-body">
 
+
+
+
+<?php
+set_error_handler(function ($err_severity, $err_msg, $err_file, $err_line, array $err_context) {
+    throw new ErrorException( $err_msg, 0, $err_severity, $err_file, $err_line );
+}, E_WARNING);
+try {
+    $contador = 0;
+    $userOrders = json_decode( file_get_contents($env.'api/orden/read.php?by=user&id='.$_SESSION["UID"]), true );
+
+    for ($x=0; $x<count($userOrders["records"]); $x++) {
+        if($contador==0) {
+?>
+                                <div class="row">
+<?php   } ?>
+                                    <div class="col-3">
+                                    <div class="card">
+                                        <img class="card-img-top" src="<?php echo $userOrders["records"][$x]["productos"][0]["image"];?>" alt="" style="height: 250px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Factura #<?php echo $userOrders["records"][$x]["id"]; ?></h5>
+                                            <p class="card-text">Fecha: <?php echo $userOrders["records"][$x]["fecha"];?></p>
+                                            <p class="card-text">Total: <?php echo $userOrders["records"][$x]["total"];?></p>
+                                            <a href="logic/factura/imprimir.php?id=<?php echo $userOrders["records"][$x]["id"]; ?>"><button class="btn btn-dark mb-1" style="width: 100%;">Imprimir Factura</button></a>
+                                            <a href="factura/index.php?id=<?php echo $userOrders["records"][$x]["id"]; ?>"><button class="btn btn-dark" style="width: 100%;">Detalles de la factura</button></a>
+                                        </div>
+                                    </div>
+                                    </div>
+<?php   $contador=$contador+1;
+        if($contador==4 || $x==(count($userOrders["records"])-1)) { ?>
+                                </div>
+<?php       $contador=0;
+        }
+    }
+} catch (Exception $e) { ?>
+    <script>cosole.log("No hay pedidos.");</script>
+<?php } 
+restore_error_handler();
+?>
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
