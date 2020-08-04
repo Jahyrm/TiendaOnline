@@ -6,7 +6,7 @@ if(isset($_COOKIE['logincookie'])) {
 	if (!isset($_SESSION['Recuperado'])) {
 		include 'logic/funciones.php';
 		$id = dec_enc('decrypt', $_COOKIE['logincookie']);
-		recuperarUser($id);
+		recuperarUser($id, $env);
 	}
 }
 

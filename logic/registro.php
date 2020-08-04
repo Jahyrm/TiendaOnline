@@ -63,12 +63,10 @@ if (isset($_POST['nombre'])) {
 					$_SESSION[ 'FUID' ] = $response3->fb_uuid;
 					$_SESSION[ 'Google' ] = $response3->google_uuid;
                     $_SESSION[ 'Recuperado' ] = true;
-                    /*
-					if (isset($recordarme)) {
-						$encrypted = dec_enc('encrypt', $_SESSION['UID']);
-						setcookie('logincookie', $encrypted, time() + (86400 * 365), '/');
-					}
-                    */
+                    
+                    $encrypted = dec_enc('encrypt', $_SESSION['UID']);
+                    setcookie('logincookie', $encrypted, time() + (86400 * 365), '/');
+                    
 					header('Location: ../index.php');
                     return;
             }

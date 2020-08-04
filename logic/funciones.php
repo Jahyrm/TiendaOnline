@@ -23,8 +23,8 @@ function dec_enc($action, $string) {
     return $output;
 }
 
-function recuperarUser($id){
-    $result = file_get_contents($env."api/user/readById.php?id=$id");
+function recuperarUser($id, $envs){
+    $result = file_get_contents($envs."api/user/readById.php?id=$id");
     $response = json_decode( $result );
     $_SESSION['UID'] = $response->id;
     $_SESSION['Tipo'] = $response->user_type;
